@@ -1,0 +1,4 @@
+Dans eclipse JEE :
+  > Installer le plugin WildFly/Jboss.
+  > Télécharger les sources WildFly 10.0.0 sur le net ou via Eclipse
+  > Importer les projets git : Dans eclipse, git clone -> import Maven project.
