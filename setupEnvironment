@@ -1,3 +1,7 @@
+Pré-requis :
+Avoir un JDK 1.8 installé sur la machine
+Eclipse kepler minimum.
+Maven 3.3.9
 Dans eclipse JEE :
   > Installer le plugin WildFly/Jboss.
   > Télécharger les sources WildFly 10.0.0 sur le net ou via Eclipse
