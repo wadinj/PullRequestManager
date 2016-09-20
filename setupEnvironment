@@ -6,3 +6,6 @@ Dans eclipse JEE :
   > Installer le plugin WildFly/Jboss.
   > Télécharger les sources WildFly 10.0.0 sur le net ou via Eclipse
   > Importer les projets git : Dans eclipse, git clone -> import Maven project.
+  
+  Potentiellement, avant le déploiement, il faut installer le metadate du pom parent dans : 
+  mvn install:install-file -DgroupId=com.escowad.prm -DartifactId=PRM-Parent -Dversion=0.0.1-SNAPSHOT -Dpackaging=pom -Dfile=pom.xml
