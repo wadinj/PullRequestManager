@@ -90,12 +90,6 @@
                     <named-formatter name="COLOR-PATTERN"/>
                 </formatter>
             </console-handler>
-            <console-handler name="CONSOLE-PRM">
-                <level name="INFO"/>
-                <formatter>
-                    <named-formatter name="COLOR-PATTERN"/>
-                </formatter>
-            </console-handler>
             <periodic-rotating-file-handler name="FILE" autoflush="true">
                 <formatter>
                     <named-formatter name="PATTERN"/>
@@ -123,14 +117,15 @@
             </logger>
             <logger category="com.escowad.prm">
                 <level name="DEBUG"/>
+                <handlers>
+                  <handler name="FILE-PRM" />
+                </handlers>
             </logger>
             <root-logger>
                 <level name="INFO"/>
                 <handlers>
                     <handler name="CONSOLE"/>
                     <handler name="FILE"/>
-                    <handler name="CONSOLE-PRM"/>
-                    <handler name="FILE-PRM"/>
                 </handlers>
             </root-logger>
             <formatter name="PATTERN">
