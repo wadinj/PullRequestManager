@@ -20,6 +20,6 @@ public class DashboardController {
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String dashboard(ModelMap model) {
 		logger.info("Redirection vers l'index dashboard");
-		return "index";
+		return "dashboard";
 	}
 }
