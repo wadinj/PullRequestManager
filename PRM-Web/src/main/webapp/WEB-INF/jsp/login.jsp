@@ -58,6 +58,8 @@
 							<div id="formSignIn" class="form-group">
 								<label>Identifiant client GitHub</label><input id="clientId"
 									class="form-control" />
+								<label>Client secret GitHub</label><input id="clientSecret"
+									class="form-control" />
 								<div class="panel-footer">
 									<a class="btn btn-block btn-social btn-github" style="margin-top:5px;"
 										href="https://github.com/login/oauth/authorize?client_id="

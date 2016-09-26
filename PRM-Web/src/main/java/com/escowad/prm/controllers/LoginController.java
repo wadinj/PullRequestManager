@@ -21,12 +21,12 @@ public class LoginController {
 	private HttpServletRequest context;
 	@Autowired
 	private GithubService service;
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, 
-						@CookieValue(value = "clientId") String clientId,
-						ModelMap model) {
-		if(clientId == null) {
+			@CookieValue(value = "clientId",defaultValue="") String clientId,
+			ModelMap model) {
+		if(clientId.isEmpty()) {
 			logger.info("Pas de cookie client ID, redirection vers la mire de login");
 			return "login";
 		} else {
@@ -34,6 +34,12 @@ public class LoginController {
 			request.getSession().setAttribute(ConstantUtils.ID_SESSION_CLI_GITHUB, service.connectToGitHubFromClientId(clientId));
 			return "dashboard";
 		}
-		
+
+	}
+	@RequestMapping(value = "/callBackGit", method = RequestMethod.GET)
+	public String login(HttpServletRequest request, 
+			ModelMap model) {
+		request.getSession().setAttribute(ConstantUtils.ID_SESSION_SECRET_GITHUB,request.getParameter("code"));
+		return "dashboard";
 	}
 }
