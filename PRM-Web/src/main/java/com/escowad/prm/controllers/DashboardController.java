@@ -39,4 +39,9 @@ public class DashboardController {
 			return new ModelAndView("login",null);
 		}
 	}
+	@RequestMapping(value = "/projectDetails", method = RequestMethod.GET)
+	public String showDetails(ModelMap model){
+		logger.info("Redirection vers le détail d'un projet");
+		return "dashboard";
+	}
 }

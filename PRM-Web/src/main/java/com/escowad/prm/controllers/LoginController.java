@@ -59,4 +59,14 @@ public class LoginController {
 		// Pour authent il faut renvoyer le lien github
 		return "dashboard";
 	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, ModelMap model) {
+		
+		//Clean cookies
+		
+		request.getSession().invalidate();
+		
+		return "login";
+	}
 }
