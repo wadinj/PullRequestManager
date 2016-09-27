@@ -1,6 +1,9 @@
 package com.escowad.prm.controllers;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -20,6 +23,29 @@ public class DashboardController {
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String dashboard(ModelMap model) {
 		logger.info("Redirection vers l'index dashboard");
+		
+		
+		/**
+		 * Chargement des détails de l'utilisateur (projets, etc)
+		 */
+		
+		/**
+		 * Projects
+		 */
+		List<String> projects = new ArrayList<String>();
+		
+		projects.add("Projet 1");
+		projects.add("Projet 2");
+		projects.add("Projet 3");
+	
+		context.getSession().setAttribute("PROJECTS", projects);
+		
+		return "dashboard";
+	}
+	
+	@RequestMapping(value = "/projectDetails", method = RequestMethod.GET)
+	public String showDetails(ModelMap model){
+		logger.info("Redirection vers le détail d'un projet");
 		return "dashboard";
 	}
 }
