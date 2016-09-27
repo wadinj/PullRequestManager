@@ -1,14 +1,30 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.escowad.prm</groupId>
-    <artifactId>PRM-Parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../PRM-Parent</relativePath>
-  </parent>
-  <artifactId>PRM-Service</artifactId>
-  <name>PRM-Service</name>
-  <packaging>ejb</packaging>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.escowad.prm</groupId>
+		<artifactId>PRM-Parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../PRM-Parent</relativePath>
+	</parent>
+	<artifactId>PRM-Service</artifactId>
+	<name>PRM-Service</name>
+	<packaging>ejb</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>com.escowad.prm</groupId>
+			<artifactId>PRM-Manager</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+	</dependencies>
 </project>

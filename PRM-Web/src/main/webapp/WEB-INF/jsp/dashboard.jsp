@@ -114,7 +114,7 @@
                             <a href="#">
                                 <div>
                                     <p>
-                                        <strong>Task 1</strong>
+                                       <strong>Task 1</strong>
                                         <span class="pull-right text-muted">40% Complete</span>
                                     </p>
                                     <div class="progress progress-striped active">
@@ -364,6 +364,11 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+              <c:forEach var="projectName" items="${projectList}">
+                   <li>
+                     <a href="forms.html"><i class="fa fa-edit fa-fw"></i>${projectName}</a>
+                   </li>
+			</c:forEach>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

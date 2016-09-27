@@ -56,11 +56,14 @@
 					<div class="panel-body">
 						<form role="form">
 							<div id="formSignIn" class="form-group">
-								<label>Nom d'utilisateur github</label><input id="usernameGitHub" class="form-control" />
+								<label>Identifiant client GitHub</label><input id="clientId"
+									class="form-control" />
+								<label>Client secret GitHub</label><input id="clientSecret"
+									class="form-control" />
 								<div class="panel-footer">
 									<a class="btn btn-block btn-social btn-github" style="margin-top:5px;"
-										href="<c:url value="/dashboard"/>"
-										onclick="window.location=this.href+'?username='+document.getElementById('usernameGitHub').value;return false;">
+										href="<c:url value="/authentGit" />"
+										onclick="window.location=this.href+'&client_id='+document.getElementById('clientId').value+'&secret_id='+document.getElementById('secretId').value;return false;">
 										<i class="fa fa-github"></i>Sign up with GitHub
 									</a>
 								</div>
