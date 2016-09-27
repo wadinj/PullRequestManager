@@ -42,4 +42,14 @@ public class LoginController {
 		request.getSession().setAttribute(ConstantUtils.ID_SESSION_SECRET_GITHUB,request.getParameter("code"));
 		return "dashboard";
 	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, ModelMap model) {
+		
+		//Clean cookies
+		
+		request.getSession().invalidate();
+		
+		return "login";
+	}
 }
