@@ -1,6 +1,5 @@
 package com.escowad.prm.services;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,18 +8,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import com.escowad.prm.entities.GithubRepository;
+import com.escowad.prm.github.entities.repository.GithubRepository;
 import com.escowad.prm.utils.ConstantUtils;
-import com.escowad.prm.utils.JSonUtils;
 
 public class GithubService {
 
@@ -53,32 +50,21 @@ public class GithubService {
 		return httpResponse.getBody();
 	}
 	
-	private String launchHttpRequestToGithub(String contextRoot, HttpMethod requestType) {
+	private Object launchGetHttpRequestToGithub(String contextRoot,Class<?> responseType) {
 		RestTemplate template = new RestTemplate();
+		template.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 		String uri = "https://api.github.com/" + contextRoot;
-		//" + ConstantUtils.ID_URL_CLI_GITHUB + "=" + clientId +
-		//"&" + ConstantUtils.ID_URL_SECRET_GITHUB + "=" + codeId;
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.TEXT_PLAIN);
-		HttpEntity<String> request = new HttpEntity<String>(headers);
-//		Map<String,String> urlParameters = new HashMap<String,String>();
-//		urlParameters.put(ConstantUtils.ID_URL_CLI_GITHUB, clientId);
-		ResponseEntity<String> httpResponse = template.exchange(uri, requestType, request, String.class);
-		logger.info(httpResponse.getBody());
-		return httpResponse.getBody();
+		return template.getForObject(uri, responseType);
 	}
-	public JSONArray listPublicRepository(String username) {
-		String response = launchHttpRequestToGithub("users/"+username+"/repos", HttpMethod.GET);		
-		return new JSONArray(response);
+//	public List<String> getAllProjectName(String username) {
+//		
+//		return JSonUtils.JSonArrayToStringList(array, "name");
+//	}
+	public List<GithubRepository> listPublicRepository(String username) {
+		GithubRepository[] repos = (GithubRepository[])launchGetHttpRequestToGithub("users/"+username+"/repos", GithubRepository[].class);
+
+		return  new ArrayList(Arrays.asList(repos));
 	}
-	public List<String> getAllProjectName(String username) {
-		List<String> returnType = new ArrayList<String>();
-		JSONArray repos = listPublicRepository(username);
-		for(int i = 0 ; i < repos.length() ; i ++) {
-			returnType.add((String)((JSONObject)repos.get(i)).get("name"));
-			logger.info((String)((JSONObject)repos.get(i)).get("name"));
-		}
-		return returnType;
-	}
+	//public void List
 
 }

@@ -1,5 +1,5 @@
 
-package com.escowad.prm.entities;
+package com.escowad.prm.github.entities.repository;
 
 import java.util.HashMap;
 import java.util.Map;

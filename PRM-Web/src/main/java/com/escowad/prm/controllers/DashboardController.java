@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.escowad.prm.github.entities.repository.GithubRepository;
 import com.escowad.prm.services.GithubService;
 
 @Controller
@@ -25,18 +26,17 @@ public class DashboardController {
 	private HttpServletRequest context;
 	
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public ModelAndView dashboard(HttpServletRequest request, ModelMap model) {
+	public String dashboard(HttpServletRequest request, ModelMap model) {
 		logger.info("Redirection vers l'index dashboard");
 		String username = request.getParameter("username");
 		if(username != null) {
+			List<GithubRepository> repos = service.listPublicRepository(username);
 			request.getSession().setAttribute("username",username);
+			request.getSession().setAttribute("githubProject",repos);
 			logger.info("Nom d'utilisateur présent, authentification OK");
-			List<String> projects = service.getAllProjectName(username);
-			ModelAndView view = new ModelAndView("dashboard");
-			view.addObject("projectList",projects);
-			return view;
+			return "dashboard";
 		} else {
-			return new ModelAndView("login",null);
+			return "login";
 		}
 	}
 	@RequestMapping(value = "/projectDetails", method = RequestMethod.GET)

@@ -1,5 +1,5 @@
 
-package com.escowad.prm.entities;
+package com.escowad.prm.github.entities.pullRequest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,133 +32,46 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "type",
     "site_admin"
 })
-public class Owner {
+public class User {
 
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("login")
     private String login;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("id")
     private Integer id;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("avatar_url")
     private String avatarUrl;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("gravatar_id")
     private String gravatarId;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("url")
     private String url;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("html_url")
     private String htmlUrl;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("followers_url")
     private String followersUrl;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("following_url")
     private String followingUrl;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("gists_url")
     private String gistsUrl;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("starred_url")
     private String starredUrl;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("subscriptions_url")
     private String subscriptionsUrl;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("organizations_url")
     private String organizationsUrl;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("repos_url")
     private String reposUrl;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("events_url")
     private String eventsUrl;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("received_events_url")
     private String receivedEventsUrl;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("type")
     private String type;
-    /**
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("site_admin")
     private Boolean siteAdmin;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The login
@@ -170,8 +83,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param login
      *     The login
      */
@@ -181,8 +92,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The id
@@ -194,8 +103,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param id
      *     The id
      */
@@ -205,8 +112,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The avatarUrl
@@ -218,8 +123,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param avatarUrl
      *     The avatar_url
      */
@@ -229,8 +132,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The gravatarId
@@ -242,8 +143,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param gravatarId
      *     The gravatar_id
      */
@@ -253,8 +152,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The url
@@ -266,8 +163,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param url
      *     The url
      */
@@ -277,8 +172,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The htmlUrl
@@ -290,8 +183,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param htmlUrl
      *     The html_url
      */
@@ -301,8 +192,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The followersUrl
@@ -314,8 +203,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param followersUrl
      *     The followers_url
      */
@@ -325,8 +212,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The followingUrl
@@ -338,8 +223,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param followingUrl
      *     The following_url
      */
@@ -349,8 +232,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The gistsUrl
@@ -362,8 +243,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param gistsUrl
      *     The gists_url
      */
@@ -373,8 +252,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The starredUrl
@@ -386,8 +263,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param starredUrl
      *     The starred_url
      */
@@ -397,8 +272,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The subscriptionsUrl
@@ -410,8 +283,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param subscriptionsUrl
      *     The subscriptions_url
      */
@@ -421,8 +292,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The organizationsUrl
@@ -434,8 +303,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param organizationsUrl
      *     The organizations_url
      */
@@ -445,8 +312,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The reposUrl
@@ -458,8 +323,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param reposUrl
      *     The repos_url
      */
@@ -469,8 +332,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The eventsUrl
@@ -482,8 +343,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param eventsUrl
      *     The events_url
      */
@@ -493,8 +352,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The receivedEventsUrl
@@ -506,8 +363,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param receivedEventsUrl
      *     The received_events_url
      */
@@ -517,8 +372,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @return
      *     The type
@@ -530,8 +383,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @param type
      *     The type
      */
@@ -542,8 +393,6 @@ public class Owner {
 
     /**
      * 
-     * (Required)
-     * 
      * @return
      *     The siteAdmin
      */
@@ -553,8 +402,6 @@ public class Owner {
     }
 
     /**
-     * 
-     * (Required)
      * 
      * @param siteAdmin
      *     The site_admin

@@ -4,6 +4,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -283,36 +284,22 @@
                             <a href="dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Projects<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>User projects<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <%
-                            		List<String> projects = new ArrayList<String>();
-                            		
-                                	List sessionObjects = (List) session.getAttribute("PROJECTS");
-                                	
-                                	if(sessionObjects != null && !sessionObjects.isEmpty()) projects.addAll(sessionObjects);
-                            		for(String project : projects){
-                            			%>
-                            			<li>
-                                    		<a href="projectDetails?name=<%=project%>"><%= project %></a>
-                                		</li>
-                            			<%
-                            		}
-                            	%>
+                            <c:forEach var="userProjectName" items="${sessionScope.githubProject}">
+                   			<li>
+                     			<a href="<c:url value="projectDetails?name=${userProjectName.name}"/>">${userProjectName.name}</a>
+ 		                    </li>
+							</c:forEach>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="dashboard"><i class="fa fa-tasks fa-fw"></i> Tasks</a>
+                            <a href="dashboard"><i class="fa fa-tasks fa-fw"></i>Tasks</a>
                         </li>
                         <li>
-                            <a href="dashboard"><i class="fa fa-wrench fa-fw"></i> Plugins</a>
+                            <a href="dashboard"><i class="fa fa-wrench fa-fw"></i>Plugins</a>
                         </li>
-              <c:forEach var="projectName" items="${projectList}">
-                   <li>
-                     <a href="forms.html"><i class="fa fa-edit fa-fw"></i>${projectName}</a>
-                   </li>
-			</c:forEach>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -359,8 +346,8 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">3</div>
-                                    <div>Running Tasks!</div>
+                                    <div class="huge">${fn:length(sessionScope.githubProject)}</div>
+                                    <div>Github project</div>
                                 </div>
                             </div>
                         </div>
