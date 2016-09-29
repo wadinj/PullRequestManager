@@ -2,7 +2,6 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -286,7 +285,7 @@
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>User projects<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                            <c:forEach var="userProjectName" items="${sessionScope.githubProject}">
+                            <c:forEach var="userProjectName" items="${sessionScope.GITHUB_PROJECTS}">
                    			<li>
                      			<a href="<c:url value="projectDetails?name=${userProjectName.name}"/>">${userProjectName.name}</a>
  		                    </li>

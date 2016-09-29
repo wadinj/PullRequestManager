@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import com.escowad.prm.github.entities.pullRequest.GithubPullRequest;
 import com.escowad.prm.github.entities.repository.GithubRepository;
 import com.escowad.prm.utils.ConstantUtils;
 
@@ -56,15 +57,21 @@ public class GithubService {
 		String uri = "https://api.github.com/" + contextRoot;
 		return template.getForObject(uri, responseType);
 	}
-//	public List<String> getAllProjectName(String username) {
-//		
-//		return JSonUtils.JSonArrayToStringList(array, "name");
-//	}
+
+	/**
+	 * List all git repository of user in parameter. Use jackson pojo in output
+	 * @param username github's username
+	 * @return all github repository of user
+	 */
 	public List<GithubRepository> listPublicRepository(String username) {
 		GithubRepository[] repos = (GithubRepository[])launchGetHttpRequestToGithub("users/"+username+"/repos", GithubRepository[].class);
 
 		return  new ArrayList(Arrays.asList(repos));
 	}
-	//public void List
+	public List<GithubPullRequest> listPullRequest(String username,String projectName) {
+		GithubPullRequest[] pullRequests = (GithubPullRequest[])launchGetHttpRequestToGithub("/repos/"+username+"/"+projectName+"/pulls", GithubPullRequest[].class);
+
+		return  new ArrayList(Arrays.asList(pullRequests));
+	}
 
 }
