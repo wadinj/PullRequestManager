@@ -1,7 +1,5 @@
 package com.escowad.prm.controllers;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.escowad.prm.services.PluginServices;
-import com.escowad.prm.utils.ConstantUtils;
 
 @Controller
 public class PluginController {
