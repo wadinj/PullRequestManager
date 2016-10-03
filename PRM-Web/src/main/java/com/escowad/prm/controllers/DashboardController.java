@@ -21,6 +21,7 @@ import com.escowad.prm.github.entities.pullRequest.GithubPullRequest;
 import com.escowad.prm.github.entities.repository.GithubRepository;
 import com.escowad.prm.services.AuthorizationService;
 import com.escowad.prm.services.GithubService;
+import com.escowad.prm.services.PluginServices;
 import com.escowad.prm.utils.ConstantUtils;
 
 @Controller
@@ -28,6 +29,8 @@ public class DashboardController {
 
 	@Autowired
 	private GithubService githubService;
+	private PluginServices pluginService;
+	
 	Logger logger = Logger.getLogger(DashboardController.class);
 	@Autowired
 	private HttpServletRequest context;
@@ -43,6 +46,7 @@ public class DashboardController {
 			if(username != null) {
 				request.getSession().setAttribute(ConstantUtils.ID_SESSION_USERNAME,username);
 				request.getSession().setAttribute(ConstantUtils.ID_SESSION_GITHUB_PROJECTS,repos);
+				//request.getSession().setAttribute("pluginNumber", pluginService.nombrePlugins());
 			}
 			logger.info("Nom d'utilisateur présent, authentification OK");
 			return "dashboard";

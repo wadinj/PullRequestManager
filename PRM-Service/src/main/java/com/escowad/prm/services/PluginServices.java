@@ -1,7 +1,6 @@
 package com.escowad.prm.services;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FilenameFilter;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
@@ -9,7 +8,6 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import java.util.jar.JarInputStream;
 
 import com.escowad.prm.api.entity.IPRM;
 
@@ -54,6 +52,7 @@ public class PluginServices {
 				jarFiles.add(new JarFile(files[i]));
 			}
 			
+			plugins.clear();
 			for(JarFile jar : jarFiles){
 				IPRM p = loadPRMPluginFromJarFile(jar);
 				plugins.add(p);
@@ -99,7 +98,7 @@ public class PluginServices {
 		return plugin;
 	}
 	
-	private boolean isIPRMClass(Class c){
+	private boolean isIPRMClass(Class<?> c){
 		return (IPRM.class.isAssignableFrom(c));
 	}
 }

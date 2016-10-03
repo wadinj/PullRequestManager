@@ -1,5 +1,7 @@
 package com.escowad.prm.api.entity;
 
+import com.escowad.prm.github.entities.pullRequest.GithubPullRequest;
+
 /**
  * @author escobedo
  *
@@ -23,7 +25,7 @@ public interface IPRM {
 	 * @param pullRequest
 	 * @return
 	 */
-	public PRMResult evaluate(PRMSource pullRequest);
+	public PRMResult evaluate(GithubPullRequest pullRequest);
 	
 	/**
 	 * Disponibilité d'un traitement possible (modification) sur la Pull Request
@@ -36,5 +38,5 @@ public interface IPRM {
 	 * @param pullRequest
 	 * @return
 	 */
-	public PRMModifiedPullRequest executeTreatment(PRMSource pullRequest);
+	public GithubPullRequest executeTreatment(GithubPullRequest pullRequest);
 }
