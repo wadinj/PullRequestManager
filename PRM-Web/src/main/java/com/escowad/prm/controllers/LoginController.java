@@ -1,8 +1,13 @@
 package com.escowad.prm.controllers;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.service.RepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,6 +46,32 @@ public class LoginController {
 		return "login";
 	}
 
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginPost(HttpServletRequest request, ModelMap model,HttpServletResponse response) throws IOException {
+		logger.info("Requete POST reçu");
+		String username = request.getParameter("usernameGitHub");
+		String password = request.getParameter("passwordGitHub");
+		logger.info("Username : " + username + " password : " + password);
+		if(username == null || password == null) {
+			logger.info("Username ou password null ! ");
+			return "redirect:/login";
+		} else {
+			GitHubClient client = new GitHubClient();
+			client.setCredentials(username, password);
+			RepositoryService service = new RepositoryService(client);
+			try {
+				request.getSession().setAttribute(ConstantUtils.ID_SESSION_REPOS,service.getRepositories());
+			} catch (IOException e) {
+				logger.info("Impossible de lister les repositories, authent fausse, redirection login");
+				return "redirect:/login";
+			}
+			// On place en session
+			
+			request.getSession().setAttribute(ConstantUtils.ID_SESSION_USERGIT, client);
+			return "redirect:/dashboard";
+		}
+	}
+
 	@RequestMapping(value = "/callBackGit", method = RequestMethod.GET)
 	public String callBackGit(HttpServletRequest request, 
 			ModelMap model) {
@@ -59,14 +90,14 @@ public class LoginController {
 		// Pour authent il faut renvoyer le lien github
 		return "dashboard";
 	}
-	
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request, ModelMap model) {
-		
+
 		//Clean cookies
-		
+
 		request.getSession().invalidate();
-		
+
 		return "login";
 	}
 }

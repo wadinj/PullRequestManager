@@ -283,9 +283,9 @@
                             <a href="dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>User projects<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw active"></i>User projects<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                            <c:forEach var="userProjectName" items="${sessionScope.GITHUB_PROJECTS}">
+                            <c:forEach var="userProjectName" items="${sessionScope.GITHUB_REPOS}">
                    			<li>
                      			<a href="<c:url value="projectDetails?name=${userProjectName.name}"/>">${userProjectName.name}</a>
  		                    </li>
@@ -345,7 +345,7 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">${fn:length(sessionScope.githubProject)}</div>
+                                    <div class="huge">${fn:length(sessionScope.GITHUB_REPOS)}</div>
                                     <div>Github project</div>
                                 </div>
                             </div>

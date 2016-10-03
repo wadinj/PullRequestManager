@@ -54,15 +54,18 @@
 						<p class="h4">Welcome to Pull Request Manager</p>
 					</div>
 					<div class="panel-body">
-						<form role="form">
+						<form action="/PRM-Web/login" method="post">
 							<div id="formSignIn" class="form-group">
-								<label>Nom d'utilisateur github</label><input id="usernameGitHub" class="form-control" />
+								<label>Nom d'utilisateur GitHub</label><input id="usernameGitHub" name="usernameGitHub" class="form-control" />
+								<label>Mot de passe GitHub</label><input id="passwordGitHub" name="passwordGitHub" type="password" class="form-control" />
 								<div class="panel-footer">
-									<a class="btn btn-block btn-social btn-github" style="margin-top:5px;"
+								<button type="submit" class="btn btn-block btn-social btn-github" style="margin-top:5px;">
+									<i class="fa fa-github"></i>Sign up with GitHub</button>
+<%-- 									<a class="btn btn-block btn-social btn-github" style="margin-top:5px;"
 										href="<c:url value="/dashboard"/>"
 										onclick="window.location=this.href+'?username='+document.getElementById('usernameGitHub').value;return false;">
 										<i class="fa fa-github"></i>Sign up with GitHub
-									</a>
+									</a> --%>
 								</div>
 							</div>
 						</form>
