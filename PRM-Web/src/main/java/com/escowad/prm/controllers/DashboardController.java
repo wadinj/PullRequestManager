@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +20,7 @@ import com.escowad.prm.github.entities.pullRequest.GithubPullRequest;
 import com.escowad.prm.github.entities.repository.GithubRepository;
 import com.escowad.prm.services.AuthorizationService;
 import com.escowad.prm.services.GithubService;
-import com.escowad.prm.services.PluginServices;
+import com.escowad.prm.services.PluginService;
 import com.escowad.prm.utils.ConstantUtils;
 
 @Controller
@@ -29,7 +28,7 @@ public class DashboardController {
 
 	@Autowired
 	private GithubService githubService;
-	private PluginServices pluginService;
+	private PluginService pluginService;
 	
 	Logger logger = Logger.getLogger(DashboardController.class);
 	@Autowired

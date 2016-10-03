@@ -9,13 +9,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.escowad.prm.services.PluginServices;
+import com.escowad.prm.services.PluginService;
 
 @Controller
 public class PluginController {
 
 	@Autowired
-	private PluginServices service;
+	private PluginService service;
 	Logger logger = Logger.getLogger(PluginController.class);
 	@Autowired
 	private HttpServletRequest context;
