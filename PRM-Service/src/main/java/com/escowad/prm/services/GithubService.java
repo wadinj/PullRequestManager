@@ -24,8 +24,8 @@ public class GithubService {
 			try {
 				allPrList.addAll(prService.getPullRequests(repoId, null));
 			} catch (IOException e) {
-				logger.error("Pas de pull request pour ce repository");
-				logger.error("Passage au suivant..");
+				logger.info("Pas de pull request pour ce repository");
+				logger.info("Passage au suivant..");
 			}
 		}
 		logger.info("Pull request trouvé : " + allPrList.size());

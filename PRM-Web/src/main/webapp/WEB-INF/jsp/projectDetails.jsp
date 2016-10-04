@@ -278,7 +278,7 @@
 						</ul> <!-- /.nav-second-level --></li>
 					<li><a href="dashboard"><i class="fa fa-tasks fa-fw"></i>Tasks</a>
 					</li>
-					<li><a href="dashboard"><i class="fa fa-wrench fa-fw"></i>Plugins</a>
+					<li><a href="/PRM-Web/plugin"><i class="fa fa-wrench fa-fw"></i>Plugins</a>
 					</li>
 				</ul>
 			</div>
@@ -305,19 +305,19 @@
 								id="dataTables-example">
 								<thead>
 									<tr>
-										<th>Last update</th>
 										<th>Title</th>
 										<th>Author</th>
+										<th>Last update</th>
 										<th>State</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="pullReq" items="${pullRequests}">
 										<tr class="info">
-											<td>${pullReq.updatedAt}</td>
 											<td>${pullReq.title}</td>
 											<td>${pullReq.user.login}</td>
-											<td class="center">${pullReq.state}</td>
+											<td>${pullReq.updatedAt}</td>
+											<td class="center">${fn:toUpperCase(pullReq.state)}</td>
 										</tr>
 									</c:forEach>
 

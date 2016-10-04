@@ -2,7 +2,6 @@ package com.escowad.prm.controllers;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.escowad.prm.github.entities.pullRequest.GithubPullRequest;
-import com.escowad.prm.github.entities.repository.GithubRepository;
 import com.escowad.prm.services.AuthorizationService;
 import com.escowad.prm.services.GithubService;
 import com.escowad.prm.services.PluginService;
@@ -36,6 +33,7 @@ public class DashboardController {
 
 	@Autowired
 	private GithubService githubService;
+	@Autowired
 	private PluginService pluginService;
 
 	Logger logger = Logger.getLogger(DashboardController.class);
@@ -65,6 +63,7 @@ public class DashboardController {
 			if(listPr == null) {
 				List<PullRequest> prs = githubService.getAllPullRequestFromAllProject(client, repos);
 				request.getSession().setAttribute(ConstantUtils.ID_SESSION_PULLREQUESTS, prs);
+				
 			}
 			return "dashboard";
 		} else {

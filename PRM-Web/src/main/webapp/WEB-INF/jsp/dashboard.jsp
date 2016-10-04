@@ -268,7 +268,7 @@
 						</ul> <!-- /.nav-second-level --></li>
 					<li><a href="dashboard"><i class="fa fa-tasks fa-fw"></i>Tasks</a>
 					</li>
-					<li><a href="dashboard"><i class="fa fa-wrench fa-fw"></i>Plugins</a>
+					<li><a href="/PRM-Web/plugin"><i class="fa fa-wrench fa-fw"></i>Plugins</a>
 					</li>
 				</ul>
 			</div>
@@ -337,12 +337,12 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">2</div>
+                                    <div class="huge">${fn:length(PLUGIN_NB)}</div>
                                     <div>Plugins</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="/PRM-Web/plugin">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -370,9 +370,9 @@
 								<thead>
 									<tr>
 										<th>Repository</th>
-										<th>Last update</th>
 										<th>Title</th>
 										<th>Author</th>
+										<th>Last update</th>
 										<th>State</th>
 									</tr>
 								</thead>
@@ -381,9 +381,9 @@
 										<tr class="info">
 										<c:set var="repoName" value="${pullReq.head.repo.name}"/>
 											<td><a href="/PRM-Web/projectDetails?name=${repoName}"><strong>${repoName}</strong></a></td>
-											<td>${pullReq.updatedAt}</td>
 											<td>${pullReq.title}</td>
 											<td>${pullReq.user.login}</td>
+											<td>${pullReq.updatedAt}</td>
 											<td class="center">${fn:toUpperCase(pullReq.state)}</td>
 										</tr>
 									</c:forEach>
