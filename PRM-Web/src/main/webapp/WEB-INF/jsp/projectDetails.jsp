@@ -18,24 +18,32 @@
 <title>Pull Request Manager</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="<c:url value="resources/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+<link
+	href="<c:url value="resources/vendor/bootstrap/css/bootstrap.min.css"/>"
+	rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="<c:url value="resources/vendor/metisMenu/metisMenu.min.css"/>" rel="stylesheet">
+<link
+	href="<c:url value="resources/vendor/metisMenu/metisMenu.min.css"/>"
+	rel="stylesheet">
 
 <!-- DataTables CSS -->
-<link href="<c:url value="resources/vendor/datatables-plugins/dataTables.bootstrap.css"/>"
+<link
+	href="<c:url value="resources/vendor/datatables-plugins/dataTables.bootstrap.css"/>"
 	rel="stylesheet">
 
 <!-- DataTables Responsive CSS -->
-<link href="<c:url value="resources/vendor/datatables-responsive/dataTables.responsive.css"/>"
+<link
+	href="<c:url value="resources/vendor/datatables-responsive/dataTables.responsive.css"/>"
 	rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="<c:url value="resources/dist/css/sb-admin-2.css"/>" rel="stylesheet">
+<link href="<c:url value="resources/dist/css/sb-admin-2.css"/>"
+	rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="<c:url value="resources/vendor/font-awesome/css/font-awesome.min.css"/>"
+<link
+	href="<c:url value="resources/vendor/font-awesome/css/font-awesome.min.css"/>"
 	rel="stylesheet" type="text/css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -61,7 +69,8 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/PRM-Web/dashboard">Pull Request Manager</a>
+			<a class="navbar-brand" href="/PRM-Web/dashboard">Pull Request
+				Manager</a>
 		</div>
 		<!-- /.navbar-header -->
 
@@ -242,42 +251,37 @@
 		</ul>
 		<!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>User projects<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                            <c:forEach var="userProjectName" items="${sessionScope.GITHUB_REPOS}">
-                   			<li>
-                     			<a href="<c:url value="projectDetails?name=${userProjectName.name}"/>">${userProjectName.name}</a>
- 		                    </li>
+		<div class="navbar-default sidebar" role="navigation">
+			<div class="sidebar-nav navbar-collapse">
+				<ul class="nav" id="side-menu">
+					<li class="sidebar-search">
+						<div class="input-group custom-search-form">
+							<input type="text" class="form-control" placeholder="Search...">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div> <!-- /input-group -->
+					</li>
+					<li><a href="dashboard"><i class="fa fa-dashboard fa-fw"></i>
+							Dashboard</a></li>
+					<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>User
+							projects<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<c:forEach var="userProjectName"
+								items="${sessionScope.GITHUB_REPOS}">
+								<li><a
+									href="<c:url value="projectDetails?name=${userProjectName.name}"/>">${userProjectName.name}</a>
+								</li>
 							</c:forEach>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="dashboard"><i class="fa fa-tasks fa-fw"></i>Tasks</a>
-                        </li>
-                        <li>
-                            <a href="dashboard"><i class="fa fa-wrench fa-fw"></i>Plugins</a>
-                        </li>
-                    </ul>
-                </div>
+						</ul> <!-- /.nav-second-level --></li>
+					<li><a href="dashboard"><i class="fa fa-tasks fa-fw"></i>Tasks</a>
+					</li>
+					<li><a href="dashboard"><i class="fa fa-wrench fa-fw"></i>Plugins</a>
+					</li>
+				</ul>
+			</div>
 			<!-- /.sidebar-collapse -->
 		</div>
 		<!-- /.navbar-static-side --> </nav>
@@ -285,7 +289,8 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Pull request on project : ${param['name']}</h1>
+					<h1 class="page-header">Pull request on project :
+						${param['name']}</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
@@ -307,15 +312,15 @@
 									</tr>
 								</thead>
 								<tbody>
-								 <c:forEach var="pullReq" items="${pullRequests}">
-									<tr class="info">
-										<td>${pullReq.updatedAt}</td>
-										<td>${pullReq.title}</td>
-										<td>${pullReq.user.login}</td>
-										<td class="center">${pullReq.state}</td>
-									</tr>
+									<c:forEach var="pullReq" items="${pullRequests}">
+										<tr class="info">
+											<td>${pullReq.updatedAt}</td>
+											<td>${pullReq.title}</td>
+											<td>${pullReq.user.login}</td>
+											<td class="center">${pullReq.state}</td>
+										</tr>
 									</c:forEach>
-									
+
 								</tbody>
 							</table>
 							<!-- /.table-responsive -->
@@ -326,318 +331,37 @@
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="panel panel-default">
-						<div class="panel-heading">Kitchen Sink</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table class="table table-striped table-bordered table-hover">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>First Name</th>
-											<th>Last Name</th>
-											<th>Username</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- /.table-responsive -->
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-				</div>
-				<!-- /.col-lg-6 -->
-				<div class="col-lg-6">
-					<div class="panel panel-default">
-						<div class="panel-heading">Basic Table</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>First Name</th>
-											<th>Last Name</th>
-											<th>Username</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- /.table-responsive -->
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-				</div>
-				<!-- /.col-lg-6 -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="panel panel-default">
-						<div class="panel-heading">Striped Rows</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table class="table table-striped">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>First Name</th>
-											<th>Last Name</th>
-											<th>Username</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- /.table-responsive -->
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-				</div>
-				<!-- /.col-lg-6 -->
-				<div class="col-lg-6">
-					<div class="panel panel-default">
-						<div class="panel-heading">Bordered Table</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div class="table-responsive table-bordered">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>First Name</th>
-											<th>Last Name</th>
-											<th>Username</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- /.table-responsive -->
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-				</div>
-				<!-- /.col-lg-6 -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="panel panel-default">
-						<div class="panel-heading">Hover Rows</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table class="table table-hover">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>First Name</th>
-											<th>Last Name</th>
-											<th>Username</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- /.table-responsive -->
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-				</div>
-				<!-- /.col-lg-6 -->
-				<div class="col-lg-6">
-					<div class="panel panel-default">
-						<div class="panel-heading">Context Classes</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>First Name</th>
-											<th>Last Name</th>
-											<th>Username</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr class="success">
-											<td>1</td>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
-										</tr>
-										<tr class="info">
-											<td>2</td>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr class="warning">
-											<td>3</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-										</tr>
-										<tr class="danger">
-											<td>4</td>
-											<td>John</td>
-											<td>Smith</td>
-											<td>@jsmith</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- /.table-responsive -->
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-				</div>
-				<!-- /.col-lg-6 -->
-			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /#page-wrapper -->
+		<!-- jQuery -->
+		<script src="<c:url value="resources/vendor/jquery/jquery.min.js"/>"></script>
 
-	</div>
-	<!-- /#wrapper -->
+		<!-- Bootstrap Core JavaScript -->
+		<script
+			src="<c:url value="resources/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
 
-	<!-- jQuery -->
-	<script src="<c:url value="resources/vendor/jquery/jquery.min.js"/>"></script>
+		<!-- Metis Menu Plugin JavaScript -->
+		<script
+			src="<c:url value="resources/vendor/metisMenu/metisMenu.min.js"/>"></script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="<c:url value="resources/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
+		<!-- DataTables JavaScript -->
+		<script
+			src="<c:url value="resources/vendor/datatables/js/jquery.dataTables.min.js"/>"></script>
+		<script
+			src="<c:url value="resources/vendor/datatables-plugins/dataTables.bootstrap.min.js"/>"></script>
+		<script
+			src="<c:url value="resources/vendor/datatables-responsive/dataTables.responsive.js"/>"></script>
 
-	<!-- Metis Menu Plugin JavaScript -->
-	<script src="<c:url value="resources/vendor/metisMenu/metisMenu.min.js"/>"></script>
+		<!-- Custom Theme JavaScript -->
+		<script src="<c:url value="resources/dist/js/sb-admin-2.js"/>"></script>
 
-	<!-- DataTables JavaScript -->
-	<script src="<c:url value="resources/vendor/datatables/js/jquery.dataTables.min.js"/>"></script>
-	<script src="<c:url value="resources/vendor/datatables-plugins/dataTables.bootstrap.min.js"/>"></script>
-	<script src="<c:url value="resources/vendor/datatables-responsive/dataTables.responsive.js"/>"></script>
-
-	<!-- Custom Theme JavaScript -->
-	<script src="<c:url value="resources/dist/js/sb-admin-2.js"/>"></script>
-
-	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-	<script>
+		<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+		<script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true
         });
     });
     </script>
-
 </body>
 
 </html>

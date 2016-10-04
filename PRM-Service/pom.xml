@@ -33,6 +33,12 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.eclipse.mylyn.github</groupId>
+			<artifactId>org.eclipse.egit.github.core</artifactId>
+			<version>2.1.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>PRM-API</groupId>
 			<artifactId>PRM-API</artifactId>
 			<version>0.0.1-SNAPSHOT</version>

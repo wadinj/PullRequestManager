@@ -8,6 +8,7 @@ public class ConstantUtils {
 	public static final String ID_SESSION_USERGIT = "USERGIT";
 	public static final String ID_SESSION_REPOS = "GITHUB_REPOS";
 	
+	public static final String ID_SESSION_PULLREQUESTS= "PULLREQUEST_PROJECTS";
 	public static final String ID_URL_CLI_GITHUB = "client_id";
 	public static final String ID_URL_SECRET_GITHUB = "secret_id";
 	public static final String URL_SECRET_GITHUB = "secret_id";

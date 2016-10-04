@@ -58,15 +58,7 @@ public class LoginController {
 		} else {
 			GitHubClient client = new GitHubClient();
 			client.setCredentials(username, password);
-			RepositoryService service = new RepositoryService(client);
-			try {
-				request.getSession().setAttribute(ConstantUtils.ID_SESSION_REPOS,service.getRepositories());
-			} catch (IOException e) {
-				logger.info("Impossible de lister les repositories, authent fausse, redirection login");
-				return "redirect:/login";
-			}
 			// On place en session
-			
 			request.getSession().setAttribute(ConstantUtils.ID_SESSION_USERGIT, client);
 			return "redirect:/dashboard";
 		}
