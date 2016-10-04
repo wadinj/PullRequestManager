@@ -1,9 +1,8 @@
 package com.escowad.prm.plugin.fake;
 
 import com.escowad.prm.api.entity.IPRM;
-import com.escowad.prm.api.entity.PRMModifiedPullRequest;
 import com.escowad.prm.api.entity.PRMResult;
-import com.escowad.prm.api.entity.PRMSource;
+import com.escowad.prm.github.entities.pullRequest.GithubPullRequest;
 
 public class PluginFake implements IPRM{
 
@@ -16,19 +15,15 @@ public class PluginFake implements IPRM{
 	public String getPluginVersion() {
 		return "1.0";
 	}
-
 	@Override
-	public PRMResult evaluate(PRMSource pullRequest) {
+	public PRMResult evaluate(GithubPullRequest pullRequest) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean executable() {
-		return false;
-	}
-
-	@Override
-	public PRMModifiedPullRequest executeTreatment(PRMSource pullRequest) {
+	public GithubPullRequest executeTreatment(GithubPullRequest pullRequest) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

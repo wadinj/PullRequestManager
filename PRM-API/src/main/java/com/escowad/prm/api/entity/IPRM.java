@@ -28,15 +28,10 @@ public interface IPRM {
 	public PRMResult evaluate(GithubPullRequest pullRequest);
 	
 	/**
-	 * Disponibilité d'un traitement possible (modification) sur la Pull Request
-	 * @return
-	 */
-	public boolean executable();
-	
-	/**
 	 * Execute un traitement spécifique sur la PullRequest
 	 * @param pullRequest
-	 * @return
+	 * @return null if your plugin didn't execute a treatment (modification on pull request)
+	 * The GithubPullRequest updated else
 	 */
 	public GithubPullRequest executeTreatment(GithubPullRequest pullRequest);
 }
