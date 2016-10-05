@@ -407,11 +407,8 @@
                         	<form method="POST" enctype="multipart/form-data" action="/PRM-Web/plugin">
 	                            <div class="form-group">
 	                            	<label class="control-label">File to upload:</label>
-<<<<<<< HEAD
 									<input id="input-1" name="file" type="file" class="file">									
-=======
-									<input name="jar" type="file" class="file"/>							
->>>>>>> branch 'master' of https://github.com/wadinj/PullRequestManager.git
+									<input name="file" type="file" class="file"/>							
 	                            </div>
                             
                             	<input type="submit" class="btn btn-default btn-block" value="Upload"/>
