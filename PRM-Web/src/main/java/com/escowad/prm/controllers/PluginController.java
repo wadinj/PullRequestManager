@@ -42,7 +42,7 @@ public class PluginController {
 	}
 
 	@RequestMapping(value =  "/plugin", method = RequestMethod.POST)
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,
+    public String handleFileUpload(@RequestParam("jar") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
         
         logger.info(storageService.store(service.getPluginFolder(), file));
