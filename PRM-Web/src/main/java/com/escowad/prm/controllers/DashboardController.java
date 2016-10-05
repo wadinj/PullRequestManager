@@ -21,7 +21,7 @@ import com.escowad.prm.github.entities.pullRequest.GithubPullRequest;
 import com.escowad.prm.github.entities.repository.GithubRepository;
 import com.escowad.prm.services.AuthorizationService;
 import com.escowad.prm.services.GithubService;
-import com.escowad.prm.services.PluginServices;
+import com.escowad.prm.services.PluginService;
 import com.escowad.prm.utils.ConstantUtils;
 
 @Controller
@@ -29,7 +29,7 @@ public class DashboardController {
 
 	@Autowired
 	private GithubService githubService;
-	private PluginServices pluginService;
+	private PluginService pluginService;
 	
 	Logger logger = Logger.getLogger(DashboardController.class);
 	@Autowired

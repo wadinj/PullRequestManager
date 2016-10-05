@@ -2,11 +2,11 @@ package com.escowad.prm.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 import com.escowad.prm.services.AuthorizationService;
 import com.escowad.prm.services.GithubService;
-import com.escowad.prm.services.PluginServices;
+import com.escowad.prm.services.PluginService;
+import com.escowad.prm.services.StorageService;
 
 @Configuration
 public class ServiceConfiguration {
@@ -20,8 +20,13 @@ public class ServiceConfiguration {
 		return new AuthorizationService();
 	}
 	@Bean
-	public PluginServices pluginsService() {
-		return new PluginServices();
+	public PluginService pluginService() {
+		return new PluginService();
+	}
+	
+	@Bean
+	public StorageService storageService(){
+		return new StorageService();
 	}
 }
 

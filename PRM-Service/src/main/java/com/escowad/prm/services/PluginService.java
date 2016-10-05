@@ -11,7 +11,7 @@ import java.util.jar.JarFile;
 
 import com.escowad.prm.api.entity.IPRM;
 
-public class PluginServices {
+public class PluginService {
 	
 	private String PLUGIN_FOLDER = "plugins";
 	private List<IPRM> plugins = new ArrayList<IPRM>();
@@ -100,5 +100,9 @@ public class PluginServices {
 	
 	private boolean isIPRMClass(Class<?> c){
 		return (IPRM.class.isAssignableFrom(c));
+	}
+	
+	public String getPluginFolder(){
+		return this.PLUGIN_FOLDER;
 	}
 }
