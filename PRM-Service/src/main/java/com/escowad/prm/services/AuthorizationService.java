@@ -12,10 +12,10 @@ public class AuthorizationService {
 	 * @return
 	 */
 	public boolean checkAuthentification(HttpServletRequest request) {
-		String username = request.getParameter("username");
-		if(username != null || request.getSession().getAttribute(ConstantUtils.ID_SESSION_USERNAME) != null) {
-			return true;
-		}
+//		String username = request.getParameter("username");
+//		if(username != null || request.getSession().getAttribute(ConstantUtils.ID_SESSION_USERNAME) != null) {
+//			return true;
+//		}
 		return false;
 	}
 }

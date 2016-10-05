@@ -32,6 +32,8 @@
 		<module>../PRM-Manager</module>
 		<module>../PRM-Service</module>
 		<module>../PRM-Web</module>
+		<module>../PRM-API</module>
+		<module>../PRM_Plugin_Fake</module>
 	</modules>
 	<dependencies>
 		<dependency>

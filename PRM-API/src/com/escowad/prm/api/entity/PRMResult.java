@@ -8,27 +8,43 @@ package com.escowad.prm.api.entity;
 public class PRMResult {
 	
 	/**
-	 * Note comprise entre 0 et 100
+	 * Mark between 0 and 100
+	 * This mark will be displayed in the front interface and the users could see it.
 	 */
 	private int mark;
 	
 	/**
-	 * Commentaire résultant de l'évaluation du plugin
+	 * Result/Comment of the plugin execution
+	 * This line will be displayed in the front interface and the users could see it.
 	 */
 	private String result;
 	
+	/**
+	 * The state after the execution
+	 */
+	private PRMStateResult state;
+	
 	public PRMResult(){
-		this(-1, "None");
+		this(-1, "None",PRMStateResult.NOT_YET_DEFINED);
 	}
 	
-	public PRMResult(int mark, String result) {
+	public PRMResult(int mark, String result,PRMStateResult state) {
 		super();
 		this.mark = mark;
 		this.result = result;
+		this.state = state;
 	}
 
 	public int getMark() {
 		return mark;
+	}
+
+	public PRMStateResult getState() {
+		return state;
+	}
+
+	public void setState(PRMStateResult state) {
+		this.state = state;
 	}
 
 	public void setMark(int mark) {
