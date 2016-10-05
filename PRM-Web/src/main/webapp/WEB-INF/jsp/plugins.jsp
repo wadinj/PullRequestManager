@@ -404,10 +404,10 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                        	<form method="POST" enctype="multipart/form-data" action="/">
+                        	<form method="POST" enctype="multipart/form-data" action="/PRM-Web/plugin">
 	                            <div class="form-group">
 	                            	<label class="control-label">File to upload:</label>
-									<input id="input-1" type="file" class="file">									
+									<input name="jar" type="file" class="file"/>							
 	                            </div>
                             
                             	<input type="submit" class="btn btn-default btn-block" value="Upload"/>
