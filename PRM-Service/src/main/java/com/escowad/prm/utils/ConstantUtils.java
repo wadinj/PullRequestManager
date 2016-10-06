@@ -13,4 +13,6 @@ public class ConstantUtils {
 	public static final String ID_URL_SECRET_GITHUB = "secret_id";
 	public static final String URL_SECRET_GITHUB = "secret_id";
 	public static final String URL_GITHUB_PREMIER_PART = "secret_id";
+	
+	public static final String ALL_PLUGINS = "ALL_PLUGINS";
 }
