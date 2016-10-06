@@ -406,8 +406,7 @@
                         <div class="panel-body">
                         	<form method="POST" enctype="multipart/form-data" action="/PRM-Web/plugin">
 	                            <div class="form-group">
-	                            	<label class="control-label">File to upload:</label>
-									<input id="input-1" name="file" type="file" class="file">									
+	                            	<label class="control-label">File to upload:</label>								
 									<input name="file" type="file" class="file"/>							
 	                            </div>
                             
