@@ -31,7 +31,6 @@ public class StorageService {
 						new FileOutputStream(serverFile));
 				stream.write(bytes);
 				stream.close();
-
 				logger.info("Server File Location="
 						+ serverFile.getAbsolutePath());
 
