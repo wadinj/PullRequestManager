@@ -6,6 +6,7 @@ import com.escowad.prm.api.entity.IPRM;
 import com.escowad.prm.api.entity.PRMResult;
 
 public class PluginTask {
+
 	private Long pullRequestID;
 	
 	private TaskState state;
