@@ -53,7 +53,7 @@ public class PluginController {
         File[] jars = storageService.getFiles();
         
         for(File f : jars){
-        	IPRM plugin = service.loadPRMPluginFromJarFile(new JarFile(f));
+        	IPRM plugin = service.loadPRMPluginFromJarFile(f);
         	service.addPlugin(plugin);
         }
         return "plugins";
