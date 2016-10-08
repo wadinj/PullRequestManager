@@ -7,6 +7,7 @@ import com.escowad.prm.services.AuthorizationService;
 import com.escowad.prm.services.GithubService;
 import com.escowad.prm.services.PluginService;
 import com.escowad.prm.services.StorageService;
+import com.escowad.prm.services.TaskService;
 
 @Configuration
 public class ServiceConfiguration {
@@ -27,6 +28,11 @@ public class ServiceConfiguration {
 	@Bean
 	public StorageService storageService(){
 		return new StorageService();
+	}
+	
+	@Bean
+	public TaskService taskService(){
+		return new TaskService();
 	}
 }
 
