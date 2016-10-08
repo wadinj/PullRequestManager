@@ -8,7 +8,6 @@ import java.util.Map;
 import org.eclipse.egit.github.core.PullRequest;
 
 import com.escowad.prm.api.entity.IPRM;
-import com.escowad.prm.github.entities.pullRequest.GithubPullRequest;
 import com.escowad.prm.plugin.entities.PluginTask;
 import com.escowad.prm.plugin.entities.TaskState;
 
