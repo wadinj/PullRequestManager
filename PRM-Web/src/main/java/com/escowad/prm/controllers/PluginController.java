@@ -1,5 +1,8 @@
 package com.escowad.prm.controllers;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -40,8 +43,14 @@ public class PluginController {
 
 	@RequestMapping(value =  "/plugin", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
-        
+                                   RedirectAttributes redirectAttributes) throws IOException {
+        logger.info("Filename : "+ file.getOriginalFilename());
+        InputStream stream = file.getInputStream();
+        int c;
+        logger.info("Read ...");
+        while((c = stream.read()) != -1) {
+        	logger.info((char)c);
+        }
         logger.info(storageService.store(service.getPluginFolder(), file));
         redirectAttributes.addFlashAttribute("message", "You successfully uploaded " + file.getOriginalFilename() + "!");
 
