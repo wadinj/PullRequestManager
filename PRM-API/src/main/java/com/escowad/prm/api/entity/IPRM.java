@@ -1,6 +1,7 @@
 package com.escowad.prm.api.entity;
 
-import com.escowad.prm.github.entities.pullRequest.GithubPullRequest;
+import org.eclipse.egit.github.core.PullRequest;
+
 
 /**
  * @author escobedo
@@ -25,7 +26,7 @@ public interface IPRM {
 	 * @param pullRequest
 	 * @return
 	 */
-	public PRMResult evaluate(GithubPullRequest pullRequest);
+	public PRMResult evaluate(PullRequest pullRequest);
 	
 	/**
 	 * Execute un traitement spécifique sur la PullRequest
@@ -33,5 +34,5 @@ public interface IPRM {
 	 * @return null if your plugin didn't execute a treatment (modification on pull request)
 	 * The GithubPullRequest updated else
 	 */
-	public GithubPullRequest executeTreatment(GithubPullRequest pullRequest);
+	public PullRequest executeTreatment(PullRequest pullRequest);
 }

@@ -1,11 +1,12 @@
 package com.escowad.prm.plugin.entities;
 
+import org.eclipse.egit.github.core.PullRequest;
+
 import com.escowad.prm.api.entity.IPRM;
 import com.escowad.prm.api.entity.PRMResult;
-import com.escowad.prm.github.entities.pullRequest.GithubPullRequest;
 
 public class PluginTask {
-	private Integer pullRequestID;
+	private long pullRequestID;
 	
 	private TaskState state;
 	
@@ -13,20 +14,20 @@ public class PluginTask {
 	
 	private PRMResult evalResult;
 	
-	private GithubPullRequest prResult;
+	private PullRequest prResult;
 
-	public PluginTask(Integer pullRequestID, TaskState state, IPRM plugin) {
+	public PluginTask(long pullRequestID, TaskState state, IPRM plugin) {
 		super();
 		this.pullRequestID = pullRequestID;
 		this.state = state;
 		this.plugin = plugin;
 	}
 
-	public final Integer getPullRequestID() {
+	public final long getPullRequestID() {
 		return pullRequestID;
 	}
 
-	public final void setPullRequestID(Integer pullRequestID) {
+	public final void setPullRequestID(long pullRequestID) {
 		this.pullRequestID = pullRequestID;
 	}
 
@@ -54,11 +55,11 @@ public class PluginTask {
 		this.evalResult = evalResult;
 	}
 
-	public final GithubPullRequest getPrResult() {
+	public final PullRequest getPrResult() {
 		return prResult;
 	}
 
-	public final void setPrResult(GithubPullRequest prResult) {
+	public final void setPrResult(PullRequest prResult) {
 		this.prResult = prResult;
 	}
 	
