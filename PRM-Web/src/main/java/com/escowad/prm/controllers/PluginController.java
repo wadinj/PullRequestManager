@@ -48,7 +48,7 @@ public class PluginController {
         logger.info(storageService.store(service.getPluginFolder(), file));
         redirectAttributes.addFlashAttribute("message", "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-        return "plugin";
+        return "plugins";
     }
 
 }
