@@ -1,7 +1,8 @@
 package com.escowad.prm.controllers;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.jar.JarFile;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.escowad.prm.api.entity.IPRM;
 import com.escowad.prm.services.PluginService;
 import com.escowad.prm.services.StorageService;
 import com.escowad.prm.utils.ConstantUtils;
@@ -48,6 +50,12 @@ public class PluginController {
         logger.info(storageService.store(service.getPluginFolder(), file));
         redirectAttributes.addFlashAttribute("message", "You successfully uploaded " + file.getOriginalFilename() + "!");
 
+        File[] jars = storageService.getFiles();
+        
+        for(File f : jars){
+        	IPRM plugin = service.loadPRMPluginFromJarFile(f);
+        	service.addPlugin(plugin);
+        }
         return "plugins";
     }
 

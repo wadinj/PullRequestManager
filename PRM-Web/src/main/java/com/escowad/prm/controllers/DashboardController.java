@@ -65,6 +65,7 @@ public class DashboardController {
 				request.getSession().setAttribute(ConstantUtils.ID_SESSION_PULLREQUESTS, prs);
 				
 			}
+			request.getSession().setAttribute(ConstantUtils.ALL_PLUGINS, pluginService.getPlugins());
 			return "dashboard";
 		} else {
 			logger.info("Redirection vers la page de login, dashboard sans session");

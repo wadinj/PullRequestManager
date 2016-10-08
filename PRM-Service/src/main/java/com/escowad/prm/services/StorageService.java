@@ -3,6 +3,7 @@ package com.escowad.prm.services;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.nio.file.Path;
 
 import org.apache.log4j.Logger;
@@ -43,4 +44,19 @@ public class StorageService {
 					+ " because the file was empty.";
 		}
     }
+	
+	public File[] getFiles(){
+		FilenameFilter jarFilter = new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				String lowercaseName = name.toLowerCase();
+				if (lowercaseName.endsWith(".jar")) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		};
+		File dir = new File("C:\\Temp\\");
+		return dir.listFiles(jarFilter);
+	}
 }

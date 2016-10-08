@@ -311,7 +311,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Plugins (${fn:length(sessionScope.plugins)})</h1>
+                    <h1 class="page-header">Plugins (${fn:length(ALL_PLUGINS)})</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -361,8 +361,8 @@
 								%>
 								<% for(IPRM plug : plugins){ %>
 									<tr class="info">
-										<td>plug.getPluginName()</td>
-										<td>plug.getPluginVersion()</td>
+										<td><%= plug.getPluginName()%></td>
+										<td><%= plug.getPluginVersion()%></td>
 									</tr>
 								<% } %>
 								</tbody>

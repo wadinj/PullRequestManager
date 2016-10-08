@@ -289,7 +289,6 @@
 		<!-- /.navbar-static-side --> </nav>
 		
 		<div id="page-wrapper">
-		
 			<c:forEach var="plugin" items="${sessionScope.PLUGINS_RESULT}">
 				<div class="col-lg-4">
 					<c:choose>

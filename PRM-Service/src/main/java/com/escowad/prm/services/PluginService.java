@@ -2,6 +2,8 @@ package com.escowad.prm.services;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -31,7 +33,7 @@ public class PluginService {
 	}
 	
 	public void addPlugin(IPRM plugin){
-		plugins.add(plugin);
+		if(!plugins.contains(plugin)) plugins.add(plugin);
 	}
 
 	public void updatePluginLibrary(){
@@ -53,13 +55,13 @@ public class PluginService {
 			};
 			
 			File[] files = pluginDirectory.listFiles(jarFilter);
-			List<JarFile> jarFiles = new ArrayList<JarFile>();
+			List<File> jarFiles = new ArrayList<File>();
 			for(int i = 0; i < files.length; i++){
-				jarFiles.add(new JarFile(files[i]));
+				jarFiles.add(files[i]);
 			}
 			
 			plugins.clear();
-			for(JarFile jar : jarFiles){
+			for(File jar : jarFiles){
 				IPRM p = loadPRMPluginFromJarFile(jar);
 				plugins.add(p);
 			}
@@ -69,37 +71,45 @@ public class PluginService {
 		}
 	}
 	
-	public IPRM loadPRMPluginFromJarFile(JarFile jarFile){
+	public IPRM loadPRMPluginFromJarFile(File base){
 		IPRM plugin = null;
+		JarFile jarFile;
+		try {
+			jarFile = new JarFile(base);
 		
-		Enumeration<JarEntry> e = jarFile.entries();
-        JarEntry jarEntry;
-
-        while (e.hasMoreElements()) {
-            jarEntry = e.nextElement();
-            if (jarEntry == null) {
-                break;
-            }
-            if (jarEntry.getName().endsWith(".class")) {
-                System.out.println("Found " + jarEntry.getName().replaceAll("/", "\\."));
-                
-                URLClassLoader sysLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
-                try {
-                	Class<?> c = sysLoader.loadClass(jarEntry.getName());
-					if(isIPRMClass(sysLoader.loadClass(jarEntry.getName()))){
-						plugin = (IPRM) c.newInstance();
+			Enumeration<JarEntry> e = jarFile.entries();
+	        JarEntry jarEntry;
+	
+	        while (e.hasMoreElements()) {
+	            jarEntry = e.nextElement();
+	            if (jarEntry == null) {
+	                break;
+	            }
+	            if (jarEntry.getName().endsWith(".class")) {
+	                System.out.println("Found " + jarEntry.getName().replaceAll("/", "\\."));
+	                
+	                //URLClassLoader sysLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
+	                URLClassLoader sysLoader = new URLClassLoader(new URL[]{base.toURI().toURL()});
+	                try {
+	                	String className = jarEntry.getName().substring(0, jarEntry.getName().length()-6).replace('/', '.');
+	                	Class<?> c = sysLoader.loadClass(className);
+						if(isIPRMClass(c)){
+							plugin = (IPRM) c.newInstance();
+						}
+					} catch (ClassNotFoundException e1) {
+						System.out.println("Impossible de charger la classe : " + e1.getMessage());
+					} catch (InstantiationException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IllegalAccessException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
-				} catch (ClassNotFoundException e1) {
-					System.out.println("Impossible de charger la classe : " + e1.getMessage());
-				} catch (InstantiationException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IllegalAccessException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-            }
-        }
+	            }
+	        }
+		} catch (IOException e2) {
+			
+		}
 		
 		return plugin;
 	}
