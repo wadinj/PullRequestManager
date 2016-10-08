@@ -6,7 +6,8 @@ import com.escowad.prm.api.entity.IPRM;
 import com.escowad.prm.api.entity.PRMResult;
 
 public class PluginTask {
-	private long pullRequestID;
+
+	private Long pullRequestID;
 	
 	private TaskState state;
 	
@@ -16,18 +17,18 @@ public class PluginTask {
 	
 	private PullRequest prResult;
 
-	public PluginTask(long pullRequestID, TaskState state, IPRM plugin) {
+	public PluginTask(Long pullRequestID, TaskState state, IPRM plugin) {
 		super();
 		this.pullRequestID = pullRequestID;
 		this.state = state;
 		this.plugin = plugin;
 	}
 
-	public final long getPullRequestID() {
+	public final Long getPullRequestID() {
 		return pullRequestID;
 	}
 
-	public final void setPullRequestID(long pullRequestID) {
+	public final void setPullRequestID(Long pullRequestID) {
 		this.pullRequestID = pullRequestID;
 	}
 
