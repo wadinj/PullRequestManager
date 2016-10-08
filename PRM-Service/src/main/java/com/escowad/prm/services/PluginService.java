@@ -5,15 +5,21 @@ import java.io.FilenameFilter;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+import org.eclipse.egit.github.core.PullRequest;
+
 import com.escowad.prm.api.entity.IPRM;
+import com.escowad.prm.api.entity.PRMResult;
+import com.escowad.prm.utils.ConstantUtils;
 
 public class PluginService {
 	
-	private String PLUGIN_FOLDER = "plugins";
 	private List<IPRM> plugins = new ArrayList<IPRM>();
 	
 	public int nombrePlugins(){
@@ -32,7 +38,7 @@ public class PluginService {
 		
 		try{
 			
-			File pluginDirectory = new File(PLUGIN_FOLDER);
+			File pluginDirectory = new File(ConstantUtils.PLUGIN_FOLDER);
 			if(!pluginDirectory.exists()) pluginDirectory.mkdir();
 			
 			FilenameFilter jarFilter = new FilenameFilter() {
@@ -103,6 +109,39 @@ public class PluginService {
 	}
 	
 	public String getPluginFolder(){
-		return this.PLUGIN_FOLDER;
+		return ConstantUtils.PLUGIN_FOLDER;
 	}
+	/**
+	 * 
+	 * @param results The current map of results in session
+	 * @param pr the pull request to process
+	 * @return
+	 */
+	public Map<Long, Map<IPRM,PRMResult>> evaluatePluginOnPullRequest(Map<Long, Map<IPRM,PRMResult>> results,PullRequest pr) {
+		Map<Long, Map<IPRM,PRMResult>> returned = results;
+		Map<IPRM,PRMResult> tmp = returned.get(pr.getId());
+		for(Entry<IPRM,PRMResult> plugResult : tmp.entrySet()) {
+				 if(plugResult.getValue() == null) {
+					 tmp.put(plugResult.getKey(), plugResult.getKey().evaluate(pr));
+				 }
+			 }
+		returned.put(pr.getId(), tmp);
+		return returned;
+	}
+
+	/**
+	 * 
+	 * @param results The current map of results in session
+	 * @param pr the pull request to process
+	 * @param plugins the list of plugins added in session
+	 * @return
+	 */
+	public PullRequest executePluginOnPullRequest(PullRequest pr,List<IPRM> plugins) {
+		PullRequest returnRequest = pr;
+		for(IPRM plugin : plugins) {
+			returnRequest = plugin.executeTreatment(pr);
+		}
+		return returnRequest;
+	}
+	
 }

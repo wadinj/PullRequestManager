@@ -287,133 +287,35 @@
 			<!-- /.sidebar-collapse -->
 		</div>
 		<!-- /.navbar-static-side --> </nav>
-
+		
 		<div id="page-wrapper">
-			<div class="row">
-				<div class="col-lg-12">
-					<h1 class="page-header">Pull request on project :
-						${param['name']}</h1>
-				</div>
-				<!-- /.col-lg-12 -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<table width="100%"
-								class="table table-striped table-bordered table-hover"
-								id="dataTables-example">
-								<thead>
-									<tr>
-										<th>Title</th>
-										<th>Author</th>
-										<th>Last update</th>
-										<th>State</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="pullReq" items="${pullRequests}">
-										<tr class="info">
-											<td>${pullReq.title}</td>
-											<td>${pullReq.user.login}</td>
-											<td>${pullReq.updatedAt}</td>
-											<td class="center">${fn:toUpperCase(pullReq.state)}</td>
-										</tr>
-									</c:forEach>
-
-								</tbody>
-							</table>
-							<!-- /.table-responsive -->
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-				</div>
-				<!-- /.col-lg-12 -->
-			</div>
-			<div class="row">
-                <div class="col-lg-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-list fa-fw"></i> Plugin List 
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Actions
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+		
+			<c:forEach var="plugin" items="${sessionScope.PLUGINS_RESULT}">
+				<div class="col-lg-4">
+					<c:choose>
+						<c:when test="${plugin.value.value.mark < 3}">
+                    		<div class="panel panel-danger">
+                    	</c:when>
+						<c:when test="${plugin.value.value.mark > 2 && plugin.value.value.mark < 5 }">
+                    		<div class="panel panel-warning">
+                    	</c:when>
+                    	<c:otherwise>
+                    		<div class="panel panel-danger">
+                    	</c:otherwise>
+                    </c:choose>
+                        	<div class="panel-heading">
+                            <c:out value="${plugin.key.name}"/>
+                        	</div>
+                        	<div class="panel-body">
+                            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                        	</div>
+                        	<div class="panel-footer">
+                            	Panel Footer
+                        	</div>
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-							<table width="100%"
-								class="table table-striped table-bordered table-hover"
-								id="dataTables-example">
-								<thead>
-									<tr>
-										<th>Author</th>
-										<th>Version</th>
-									</tr>
-								</thead>
-								<tbody>
-								<% 
-									List<IPRM> plugins = new ArrayList<IPRM>();
-									if(session.getAttribute(ConstantUtils.ALL_PLUGINS) != null){
-										plugins.addAll((List<IPRM>)session.getAttribute(ConstantUtils.ALL_PLUGINS));
-									}
-								%>
-								<% for(IPRM plug : plugins){ %>
-									<tr class="info">
-										<td>plug.getPluginName()</td>
-										<td>plug.getPluginVersion()</td>
-									</tr>
-								<% } %>
-								</tbody>
-							</table>
-							<!-- /.table-responsive -->
-						</div>
-						<!-- /.panel-body -->
                     </div>
-                    <!-- /.panel -->
                 </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-plus fa-fw"></i> Add Plugin
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                        	<form method="POST" enctype="multipart/form-data" action="/PRM-Web/plugin">
-	                            <div class="form-group">
-	                            	<label class="control-label">File to upload:</label>								
-									<input name="file" type="file" class="file"/>							
-	                            </div>
-                            
-                            	<input type="submit" class="btn btn-default btn-block" value="Upload"/>
-                            </form>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
+			</c:forEach>
 		</div>
 		<!-- jQuery -->
 		<script src="<c:url value="resources/vendor/jquery/jquery.min.js"/>"></script>
