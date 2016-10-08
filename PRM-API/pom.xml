@@ -11,12 +11,6 @@
 		<relativePath>../PRM-Parent</relativePath>
 	</parent>
   <dependencies>
-  	<dependency>
-  		<groupId>com.escowad.prm</groupId>
-  		<artifactId>PRM-Manager</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  		<type>ejb</type>
-  	</dependency>
   			<dependency>
 			<groupId>org.eclipse.mylyn.github</groupId>
 			<artifactId>org.eclipse.egit.github.core</artifactId>
