@@ -1,9 +1,10 @@
 package com.escowad.prm.plugin.fake;
 
+import org.eclipse.egit.github.core.PullRequest;
+
 import com.escowad.prm.api.entity.IPRM;
 import com.escowad.prm.api.entity.PRMResult;
 import com.escowad.prm.api.entity.PRMStateResult;
-import com.escowad.prm.github.entities.pullRequest.GithubPullRequest;
 
 public class PluginFake implements IPRM{
 
@@ -17,12 +18,12 @@ public class PluginFake implements IPRM{
 		return "1.0";
 	}
 	@Override
-	public PRMResult evaluate(GithubPullRequest pullRequest) {
+	public PRMResult evaluate(PullRequest pullRequest) {
 		return new PRMResult(61, "Test réussi", PRMStateResult.PASSED);
 	}
 	
 	@Override
-	public GithubPullRequest executeTreatment(GithubPullRequest pullRequest) {
+	public PullRequest executeTreatment(PullRequest pullRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}

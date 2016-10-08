@@ -25,7 +25,7 @@ public class PluginService {
 	}
 	
 	public void addPlugin(IPRM plugin){
-		plugins.add(plugin);
+		if(!plugins.contains(plugin)) plugins.add(plugin);
 	}
 
 	public void updatePluginLibrary(){

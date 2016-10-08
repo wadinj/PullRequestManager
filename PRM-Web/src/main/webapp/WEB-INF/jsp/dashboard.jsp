@@ -337,7 +337,7 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">${fn:length(PLUGIN_NB)}</div>
+                                    <div class="huge">${fn:length(ALL_PLUGINS)}</div>
                                     <div>Plugins</div>
                                 </div>
                             </div>
