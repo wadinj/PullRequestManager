@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.escowad.prm</groupId>
 		<artifactId>PRM-Parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 		<relativePath>../PRM-Parent</relativePath>
 	</parent>
 	<artifactId>PRM-Web</artifactId>
@@ -73,21 +73,21 @@
 		<dependency>
 			<groupId>com.escowad.prm</groupId>
 			<artifactId>PRM-Service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<type>ejb</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.escowad.prm</groupId>
 			<artifactId>PRM-Manager</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<type>ejb</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>PRM-API</groupId>
+			<groupId>com.escowad.prm</groupId>
 			<artifactId>PRM-API</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

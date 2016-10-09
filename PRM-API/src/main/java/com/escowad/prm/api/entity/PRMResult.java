@@ -8,19 +8,22 @@ package com.escowad.prm.api.entity;
 public class PRMResult {
 	
 	/**
-	 * Mark between 0 and 100
-	 * This mark will be displayed in the front interface and the users could see it.
+	 * Note entre 1 et 10
+	 * Cette note sera affiché à l'écran des détails du l'execution du plugin.
 	 */
 	private int mark;
 	
 	/**
-	 * Result/Comment of the plugin execution
-	 * This line will be displayed in the front interface and the users could see it.
+	 * Résultat/Commentaire sur l'exécution du plugin
+	 * Ce résultat sera affiché à l'écran des détails du l'execution du plugin.
 	 */
 	private String result;
 	
 	/**
-	 * The state after the execution
+	 * Etat du résultat : 
+	 * PRMStateResult.FAILED : L'execution a échoué ou le score est insuffisant
+	 * PRMStateResult.PASSED : L'execution a réussi et le score est suffisant
+	 * PRMStateResult.PASSED_WITH_UPDATE : L'execution a réussi et le plugin a modifié la pull request
 	 */
 	private PRMStateResult state;
 	

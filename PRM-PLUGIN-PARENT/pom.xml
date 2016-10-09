@@ -3,14 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.escowad.prm</groupId>
 	<artifactId>PRM-PLUGIN-PARENT</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<name>Pom parent pour les deux plugins tests</name>
 	<dependencies>
 		<dependency>
-			<groupId>PRM-API</groupId>
+			<groupId>com.escowad.prm</groupId>
 			<artifactId>PRM-API</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 

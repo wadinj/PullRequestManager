@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.escowad.prm</groupId>
 		<artifactId>PRM-Parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 		<relativePath>../PRM-Parent</relativePath>
 	</parent>
 	<artifactId>PRM-EAR</artifactId>
@@ -36,7 +36,7 @@
 							<bundleFileName>PRM-Service.jar</bundleFileName>
 						</ejbModule>
 						<ejbModule>
-							<groupId>PRM-API</groupId>
+							<groupId>com.escowad.prm</groupId>
 							<artifactId>PRM-API</artifactId>
 							<bundleFileName>PRM-API.jar</bundleFileName>
 						</ejbModule>
@@ -60,19 +60,19 @@
 		<dependency>
 			<groupId>com.escowad.prm</groupId>
 			<artifactId>PRM-Manager</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>com.escowad.prm</groupId>
 			<artifactId>PRM-Service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>com.escowad.prm</groupId>
 			<artifactId>PRM-Web</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
@@ -92,9 +92,9 @@
 			<version>2.4</version>
 		</dependency>
 		<dependency>
-			<groupId>PRM-API</groupId>
+			<groupId>com.escowad.prm</groupId>
 			<artifactId>PRM-API</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
