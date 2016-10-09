@@ -1,7 +1,9 @@
 <%@page import="com.escowad.prm.utils.ConstantUtils"%>
 <%@page import="com.escowad.prm.api.entity.IPRM"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.Map.Entry"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="com.escowad.prm.api.entity.PRMResult"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -266,46 +268,39 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>User projects<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                            <c:forEach var="userProjectName" items="${sessionScope.GITHUB_PROJECTS}">
-                   			<li>
-                     			<a href="<c:url value="projectDetails?name=${userProjectName.name}"/>">${userProjectName.name}</a>
- 		                    </li>
+		<div class="navbar-default sidebar" role="navigation">
+			<div class="sidebar-nav navbar-collapse">
+				<ul class="nav" id="side-menu">
+					<li class="sidebar-search">
+						<div class="input-group custom-search-form">
+							<input type="text" class="form-control" placeholder="Search...">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div> <!-- /input-group -->
+					</li>
+					<li><a href="dashboard"><i class="fa fa-dashboard fa-fw"></i>
+							Dashboard</a></li>
+					<li><a href="#"><i class="fa fa-bar-chart-o fa-fw active"></i>User
+							projects<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<c:forEach var="userProjectName"
+								items="${sessionScope.GITHUB_REPOS}">
+								<li><a
+									href="<c:url value="projectDetails?name=${userProjectName.name}"/>">${userProjectName.name}</a>
+								</li>
 							</c:forEach>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="dashboard"><i class="fa fa-tasks fa-fw"></i>Tasks</a>
-                        </li>
-                        <li>
-                            <a href="dashboard"><i class="fa fa-wrench fa-fw"></i>Plugins</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
+						</ul> <!-- /.nav-second-level --></li>
+					<li><a href="dashboard"><i class="fa fa-tasks fa-fw"></i>Tasks</a>
+					</li>
+					<li><a href="/PRM-Web/plugin"><i class="fa fa-wrench fa-fw"></i>Plugins</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /.sidebar-collapse -->
+		</div>
         </nav>
 
         <div id="page-wrapper">
@@ -354,17 +349,21 @@
 								</thead>
 								<tbody>
 								<% 
-									List<IPRM> plugins = new ArrayList<IPRM>();
-									if(session.getAttribute(ConstantUtils.ALL_PLUGINS) != null){
-										plugins.addAll((List<IPRM>)session.getAttribute(ConstantUtils.ALL_PLUGINS));
-									}
+									Map<Long, Map<IPRM,PRMResult>> map;
+									if(session.getAttribute(ConstantUtils.ID_SESSION_PLUGIN_RESULT) != null){
+										map = (Map<Long, Map<IPRM,PRMResult>>)session.getAttribute(ConstantUtils.ID_SESSION_PLUGIN_RESULT);
+									
 								%>
-								<% for(IPRM plug : plugins){ %>
+								<%  Map.Entry<Long, Map<IPRM,PRMResult>> entry=map.entrySet().iterator().next();
+								 Map<IPRM,PRMResult> mapPRM = entry.getValue();
+								 for(Entry<IPRM,PRMResult> PRM : mapPRM.entrySet()) {
+									 %>
 									<tr class="info">
-										<td><%= plug.getPluginName()%></td>
-										<td><%= plug.getPluginVersion()%></td>
+										<td><%= PRM.getKey().getPluginName()%></td>
+										<td><%= PRM.getKey().getPluginVersion() %></td>
 									</tr>
-								<% } %>
+								<% } 
+								 }%>
 								</tbody>
 							</table>
 							<!-- /.table-responsive -->

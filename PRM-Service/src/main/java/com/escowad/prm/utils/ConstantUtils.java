@@ -15,4 +15,6 @@ public class ConstantUtils {
 	public static final String URL_GITHUB_PREMIER_PART = "secret_id";
 	public static final String PLUGIN_FOLDER = "C:\\Temp";
 	public static final String ALL_PLUGINS = "ALL_PLUGINS";
+	public static final String ID_REQUEST_AVERAGE = "MAP_AVERAGE";
+
 }

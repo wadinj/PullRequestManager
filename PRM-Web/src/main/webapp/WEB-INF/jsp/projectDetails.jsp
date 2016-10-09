@@ -1,5 +1,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="com.escowad.prm.utils.ConstantUtils"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.escowad.prm.services.PluginService"%>
+<%@page import="org.eclipse.egit.github.core.PullRequest"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -309,21 +313,34 @@
 										<th>Author</th>
 										<th>Last update</th>
 										<th>State</th>
+										<th>Average</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="pullReq" items="${pullRequests}">
+										<% 
+										Map<Long,Integer> map = (Map<Long,Integer>) request.getAttribute(ConstantUtils.ID_REQUEST_AVERAGE);
+										int average = map.get(((PullRequest)pageContext.getAttribute("pullReq")).getId());
+										   if(average < 3 && average >= 0) {
+										%>
+										<tr class="danger">
+										<% } else if(average >= 3 && average < 7) { %>
+										<tr class="warning">
+										<% } else if(average == -1){ %>
 										<tr class="info">
+										<% } else { %>
+										<tr class="success">
+										<% } %>	
 											<td>${pullReq.title}</td>
 											<td>${pullReq.user.login}</td>
 											<td>${pullReq.updatedAt}</td>
 											<td class="center">${fn:toUpperCase(pullReq.state)}</td>
+											<td><% if(average != -1) { %> <%= average %> <% } else { %>NA <% } %></td>
 										</tr>
 									</c:forEach>
 
 								</tbody>
-							</table>
-							<!-- /.table-responsive -->
+							</table>							
 						</div>
 						<!-- /.panel-body -->
 					</div>

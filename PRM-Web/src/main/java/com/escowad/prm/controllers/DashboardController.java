@@ -2,7 +2,9 @@ package com.escowad.prm.controllers;
 
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.escowad.prm.api.entity.IPRM;
+import com.escowad.prm.api.entity.PRMResult;
 import com.escowad.prm.services.AuthorizationService;
 import com.escowad.prm.services.GithubService;
 import com.escowad.prm.services.PluginService;
@@ -47,6 +51,7 @@ public class DashboardController {
 			@SessionAttribute(required=true, name=ConstantUtils.ID_SESSION_USERGIT) GitHubClient client,
 			@SessionAttribute(required=false, name=ConstantUtils.ID_SESSION_PULLREQUESTS) List<PullRequest> listPr,
 			@SessionAttribute(required=false, name=ConstantUtils.ID_SESSION_REPOS) List<Repository> repos,
+			@SessionAttribute(required=false, name=ConstantUtils.ID_SESSION_PLUGIN_RESULT) Map<Long, Map<IPRM,PRMResult>> results,
 			ModelMap model) {
 		if(client != null) {
 			logger.info("Redirection vers l'index dashboard");
@@ -55,6 +60,7 @@ public class DashboardController {
 				if(repos == null) {
 					repos = service.getRepositories();
 					request.getSession().setAttribute(ConstantUtils.ID_SESSION_REPOS,repos);
+					
 				}
 			} catch (IOException e) {
 				logger.info("Impossible de lister les repositories, authent fausse, redirection login");
@@ -62,9 +68,14 @@ public class DashboardController {
 			}
 			if(listPr == null) {
 				List<PullRequest> prs = githubService.getAllPullRequestFromAllProject(client, repos);
+				request.getSession().setAttribute(ConstantUtils.ID_SESSION_PLUGIN_RESULT,pluginService.initSession(prs));
 				request.getSession().setAttribute(ConstantUtils.ID_SESSION_PULLREQUESTS, prs);
-				
 			}
+			Map<Long, Integer> mapAverage = new HashMap<Long, Integer>();
+			for(PullRequest pr : (List<PullRequest>)request.getSession().getAttribute(ConstantUtils.ID_SESSION_PULLREQUESTS)) {
+				mapAverage.put(pr.getId(), pluginService.getEvaluationForPullRequest(pr));
+			}
+			request.setAttribute(ConstantUtils.ID_REQUEST_AVERAGE, mapAverage);
 			request.getSession().setAttribute(ConstantUtils.ALL_PLUGINS, pluginService.getPlugins());
 			return "dashboard";
 		} else {
@@ -76,7 +87,8 @@ public class DashboardController {
 	public ModelAndView showDetails(ModelMap model,
 			@SessionAttribute(required=true, name=ConstantUtils.ID_SESSION_USERGIT) GitHubClient client,
 			@RequestParam(required=true, name="name") String projectName,
-			HttpSession session){
+			HttpSession session,
+			HttpServletRequest request){
 		logger.info("Redirection vers le détail d'un projet");
 		PullRequestService service = new PullRequestService(client);
 		RepositoryId repo = new RepositoryId(client.getUser(), projectName);
@@ -85,6 +97,11 @@ public class DashboardController {
 			List<PullRequest> prs = service.getPullRequests(repo, null);
 			logger.info("La taille de pull request : " + prs.size());
 			mv.addObject("pullRequests",prs);
+			Map<Long, Integer> mapAverage = new HashMap<Long, Integer>();
+			for(PullRequest pr : prs) {
+				mapAverage.put(pr.getId(), pluginService.getEvaluationForPullRequest(pr));
+			}
+			request.setAttribute(ConstantUtils.ID_REQUEST_AVERAGE, mapAverage);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

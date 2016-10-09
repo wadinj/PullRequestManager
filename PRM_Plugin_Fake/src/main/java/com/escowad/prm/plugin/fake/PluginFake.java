@@ -1,5 +1,7 @@
 package com.escowad.prm.plugin.fake;
 
+import java.util.Random;
+
 import org.eclipse.egit.github.core.PullRequest;
 
 import com.escowad.prm.api.entity.IPRM;
@@ -8,6 +10,9 @@ import com.escowad.prm.api.entity.PRMStateResult;
 
 public class PluginFake implements IPRM{
 
+	public PluginFake() {
+		super();
+	}
 	@Override
 	public String getPluginName() {
 		return "Fake test plugin";
@@ -19,7 +24,9 @@ public class PluginFake implements IPRM{
 	}
 	@Override
 	public PRMResult evaluate(PullRequest pullRequest) {
-		return new PRMResult(61, "Test réussi", PRMStateResult.PASSED);
+		Random r = new Random();
+		
+		return new PRMResult(r.nextInt(10), "Test réussi", PRMStateResult.PASSED);
 	}
 	
 	@Override

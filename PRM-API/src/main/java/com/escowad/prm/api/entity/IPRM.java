@@ -1,5 +1,7 @@
 package com.escowad.prm.api.entity;
 
+import java.io.Serializable;
+
 import org.eclipse.egit.github.core.PullRequest;
 
 

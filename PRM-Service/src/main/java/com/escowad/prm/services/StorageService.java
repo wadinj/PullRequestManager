@@ -35,13 +35,12 @@ public class StorageService {
 				logger.info("Server File Location="
 						+ serverFile.getAbsolutePath());
 
-				return "You successfully uploaded file=" + name;
+				return serverFile.getAbsolutePath();
 			} catch (Exception e) {
-				return "You failed to upload " + name + " => " + e.getMessage();
+				return "";
 			}
 		} else {
-			return "You failed to upload " + name
-					+ " because the file was empty.";
+			return "";
 		}
     }
 	
