@@ -261,7 +261,7 @@
 					</li>
 					<li><a href="dashboard"><i class="fa fa-dashboard fa-fw"></i>
 							Dashboard</a></li>
-					<li><a href="#"><i class="fa fa-bar-chart-o fa-fw active"></i>User
+					<li><a id="expandProject" href="#"><i class="fa fa-bar-chart-o fa-fw active"></i>User
 							projects<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<c:forEach var="userProjectName"
@@ -325,7 +325,7 @@
 								</div>
 							</div>
 						</div>
-						<a href="#">
+						<a href="#" onclick="document.getElementById('expandProject').click();">
 							<div class="panel-footer">
 								<span class="pull-left">View Details</span> <span
 									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -342,7 +342,7 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">${fn:length(ALL_PLUGINS)}</div>
+                                    <div class="huge">${sessionScope.PLUGIN_NB}</div>
                                     <div>Plugins</div>
                                 </div>
                             </div>
@@ -399,7 +399,7 @@
 										<% } %>	
 										<c:set var="repoName" value="${pullReq.head.repo.name}"/>
 											<td><a href="/PRM-Web/projectDetails?name=${repoName}"><strong>${repoName}</strong></a></td>
-											<td>${pullReq.title}</td>
+											<td><a href="/PRM-Web/pullRequest?id=${pullReq.id}">${pullReq.title}</a></td>
 											<td>${pullReq.user.login}</td>
 											<td>${pullReq.updatedAt}</td>
 											<td class="center">${fn:toUpperCase(pullReq.state)}</td>

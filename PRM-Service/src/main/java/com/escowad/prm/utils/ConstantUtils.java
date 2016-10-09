@@ -16,5 +16,6 @@ public class ConstantUtils {
 	public static final String PLUGIN_FOLDER = "C:\\Temp";
 	public static final String ALL_PLUGINS = "ALL_PLUGINS";
 	public static final String ID_REQUEST_AVERAGE = "MAP_AVERAGE";
+	public static final String ID_SESSION_PLUGIN_NB = "PLUGIN_NB";
 
 }

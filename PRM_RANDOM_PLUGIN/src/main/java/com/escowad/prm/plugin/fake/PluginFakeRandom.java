@@ -8,14 +8,14 @@ import com.escowad.prm.api.entity.IPRM;
 import com.escowad.prm.api.entity.PRMResult;
 import com.escowad.prm.api.entity.PRMStateResult;
 
-public class PluginFake implements IPRM{
+public class PluginFakeRandom implements IPRM{
 
-	public PluginFake() {
+	public PluginFakeRandom() {
 		super();
 	}
 	@Override
 	public String getPluginName() {
-		return "PRM Random plugin n°1";
+		return "PRM Random plugin n°2";
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class PluginFake implements IPRM{
 	public PRMResult evaluate(PullRequest pullRequest) {
 		Random r = new Random();
 		int rand = r.nextInt(10);
-		return new PRMResult(rand, "Le plugin random 1 vous a attribué une note de : " + rand + "/10", rand < 5 ? PRMStateResult.FAILED :  PRMStateResult.PASSED);
+		return new PRMResult(rand, "Le plugin random 2 vous a attribué une note de : " + rand + "/10", rand < 5 ? PRMStateResult.FAILED :  PRMStateResult.PASSED);
 	}
 	
 	@Override

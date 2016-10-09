@@ -331,7 +331,7 @@
 										<% } else { %>
 										<tr class="success">
 										<% } %>	
-											<td>${pullReq.title}</td>
+											<td><a href="/PRM-Web/pullRequest?id=${pullReq.id}">${pullReq.title}</a></td>
 											<td>${pullReq.user.login}</td>
 											<td>${pullReq.updatedAt}</td>
 											<td class="center">${fn:toUpperCase(pullReq.state)}</td>

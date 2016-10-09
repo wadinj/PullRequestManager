@@ -39,8 +39,10 @@ public class PullRequestControlleur {
 	public String login(HttpServletRequest request,
 						@RequestParam("id") long id,
 						@SessionAttribute(name=ConstantUtils.ID_SESSION_PULLREQUESTS,required=true) List<PullRequest> prs,
-						@SessionAttribute(name=ConstantUtils.ID_SESSION_PLUGIN_RESULT,required=true) Map<Long, Map<IPRM,PRMResult>> results,
+						@SessionAttribute(name=ConstantUtils.ID_SESSION_PLUGIN_RESULT,required=false) Map<Long, Map<IPRM,PRMResult>> results,
 						ModelMap model) {
+		Map<IPRM,PRMResult> mapResult = results.get(id);
+		request.setAttribute("PRMRESULT", mapResult);
 		pluginService.evaluatePluginOnPullRequest(results, prService.getPullRequestFromId(prs, id));
 		return "pullRequestDetails";
 	}

@@ -70,6 +70,7 @@ public class DashboardController {
 				List<PullRequest> prs = githubService.getAllPullRequestFromAllProject(client, repos);
 				request.getSession().setAttribute(ConstantUtils.ID_SESSION_PLUGIN_RESULT,pluginService.initSession(prs));
 				request.getSession().setAttribute(ConstantUtils.ID_SESSION_PULLREQUESTS, prs);
+				request.getSession().setAttribute(ConstantUtils.ID_SESSION_PLUGIN_NB, 0);
 			}
 			Map<Long, Integer> mapAverage = new HashMap<Long, Integer>();
 			for(PullRequest pr : (List<PullRequest>)request.getSession().getAttribute(ConstantUtils.ID_SESSION_PULLREQUESTS)) {

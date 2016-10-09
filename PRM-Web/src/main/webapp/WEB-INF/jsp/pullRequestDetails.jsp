@@ -1,7 +1,10 @@
 <%@page import="com.escowad.prm.utils.ConstantUtils"%>
 <%@page import="com.escowad.prm.api.entity.IPRM"%>
+<%@page import="com.escowad.prm.api.entity.PRMResult"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.Map.Entry"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -289,32 +292,42 @@
 		<!-- /.navbar-static-side --> </nav>
 		
 		<div id="page-wrapper">
-			<c:forEach var="plugin" items="${sessionScope.PLUGINS_RESULT}">
+		            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Details of pull request</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+		<c:set var="result" value="${PRMRESULT}" scope="request" />
+			<% Map<IPRM,PRMResult> map = ((Map<IPRM,PRMResult>)request.getAttribute("PRMRESULT"));
+			 if(map.size() != 0) {
+			for(Entry<IPRM,PRMResult> entry : map.entrySet()) {%>
+			  <div class="row">
 				<div class="col-lg-4">
-					<c:choose>
-						<c:when test="${plugin.value.value.mark < 3}">
+					<% if(entry.getValue().getMark() < 3 && entry.getValue().getMark() > -1) { %>
                     		<div class="panel panel-danger">
-                    	</c:when>
-						<c:when test="${plugin.value.value.mark > 2 && plugin.value.value.mark < 5 }">
+					<% } else if(entry.getValue().getMark() > 2 && entry.getValue().getMark() < 7) { %>
                     		<div class="panel panel-warning">
-                    	</c:when>
-                    	<c:otherwise>
-                    		<div class="panel panel-danger">
-                    	</c:otherwise>
-                    </c:choose>
+                    	<% } else { %>
+                    		<div class="panel panel-success">
+                    	<% } %>
                         	<div class="panel-heading">
-                            <c:out value="${plugin.key.name}"/>
+                            <%=entry.getKey().getPluginName() %> (<%=entry.getValue().getMark() %>/10)
                         	</div>
                         	<div class="panel-body">
-                            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                            	<%=entry.getValue().getResult() %>
                         	</div>
                         	<div class="panel-footer">
-                            	Panel Footer
+                            	<%=entry.getValue().getState() %>
                         	</div>
                         </div>
-                    </div>
-                </div>
-			</c:forEach>
+              </div>
+              </div>
+			<% } } else { %>
+			<div class="row">
+				<h2>Pas de plugin ajouté</h2>
+				</div>
+			<% } %>
 		</div>
 		<!-- jQuery -->
 		<script src="<c:url value="resources/vendor/jquery/jquery.min.js"/>"></script>
