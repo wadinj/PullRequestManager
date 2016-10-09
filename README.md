@@ -1,19 +1,20 @@
 # PullRequestManager
 
 Mise en place du projet :
-> PRM-Parent : POM Parent de build
-> PRM-EAR : Archive de déploiement Wildfly 10.0.0
-> PRM-Manager : projet EJB Entity hibernate
-> PRM-Service : projet de bean session couche metier
+- PRM-Parent : POM Parent de build
+- PRM-EAR : Archive de déploiement Wildfly 10.0.0
+- PRM-Manager : projet EJB Entity hibernate
+- PRM-Service : projet de bean session couche metier
 
 Build : PRM-Parent : mvn:install
 Archive déployable sous Wildfly 10.0.0 :
 	> URL d'index : http://localhost:8080/PRM-Web/index.jsp
 
-Création d'un plugin : 
+Création d'un plugin
+
 Pré-requis : 
-	*Maven installé sur votre poste
-	*JDK 1.8
+- Maven installé sur votre poste
+- JDK 1.8
 	
 Télécharger la librairie : https://drive.google.com/open?id=0B0u9sxblZpSsS01MVFdidnBMUDQ (PRM-API)
 Placer vous dans le répertoire du fichier téléchargé (PRM-API-1.0.0) avec un invite au commande et lancer : 
@@ -36,6 +37,7 @@ Créér votre projet maven sous l'IDE de votre choix, puis ajoutez les dependanc
 
 Implémenter la classe com.escowad.prm.api.entity.IPRM (Javadoc disponible dans l'API).
 Compiler votre plugin avec Java 1.8, sous maven :
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -48,8 +50,10 @@ Compiler votre plugin avec Java 1.8, sous maven :
 			</plugin>
 		</plugins>
 	</build>
+
 /!\ Dans le cas de dépendances externes dans votre plugin, vous devez les ajouter à votre processus de build (avec maven) : 
- 	<build>
+ 	
+	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -72,4 +76,5 @@ Compiler votre plugin avec Java 1.8, sous maven :
 			</plugin>
 		</plugins>
 	</build>
+	
 Puis uploader votre plugin via l'interface PRM-Manager
