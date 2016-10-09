@@ -1,5 +1,7 @@
 # PullRequestManager
 
+Auteurs : ESCOBEDO Goeffrey & WADIN Jonathan  
+
 Mise en place du projet :
 - PRM-Parent : POM Parent de build
 - PRM-EAR : Archive de déploiement Wildfly 10.0.0
