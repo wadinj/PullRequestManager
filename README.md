@@ -17,8 +17,10 @@ Pré-requis :
 - JDK 1.8
 	
 Télécharger la librairie : https://drive.google.com/open?id=0B0u9sxblZpSsS01MVFdidnBMUDQ (PRM-API)
-Placer vous dans le répertoire du fichier téléchargé (PRM-API-1.0.0) avec un invite au commande et lancer : 
-mvn install:install-file -DgroupId=com.escowad.prm -DartifactId=PRM-API -Dversion=1.0.0 -Dpackaging=jar -Dfile=PRM-API-1.0.0.jar
+Placez-vous dans le répertoire du fichier téléchargé (PRM-API-1.0.0) avec un invite au commande et lancer : 
+
+$ mvn install:install-file -DgroupId=com.escowad.prm -DartifactId=PRM-API -Dversion=1.0.0 -Dpackaging=jar -Dfile=PRM-API-1.0.0.jar
+
 Créér votre projet maven sous l'IDE de votre choix, puis ajoutez les dependances suivantes : 
 
 		<dependency>
