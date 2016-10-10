@@ -2,7 +2,7 @@
 
 Auteurs : ESCOBEDO Goeffrey & WADIN Jonathan  
 
-Mise en place du projet :
+## Mise en place du projet :
 - PRM-Parent : POM Parent de build
 - PRM-EAR : Archive de déploiement Wildfly 10.0.0
 - PRM-Manager : projet EJB Entity hibernate
@@ -12,7 +12,7 @@ Build : PRM-Parent : mvn:install
 Archive déployable sous Wildfly 10.0.0 :
 	> URL d'index : http://localhost:8080/PRM-Web/index.jsp
 
-Création d'un plugin
+## Création d'un plugin
 
 Pré-requis : 
 - Maven installé sur votre poste
