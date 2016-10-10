@@ -2,11 +2,16 @@
 
 Auteurs : ESCOBEDO Goeffrey & WADIN Jonathan  
 
-## Mise en place du projet :
-- PRM-Parent : POM Parent de build
-- PRM-EAR : Archive de déploiement Wildfly 10.0.0
-- PRM-Manager : projet EJB Entity hibernate
-- PRM-Service : projet de bean session couche metier
+## Mise en place du projet
+
+* PRM-Parent : POM Parent de build
+* PRM-EAR : Archive de déploiement Wildfly 10.0.0
+* PRM-Manager : projet EJB Entity hibernate
+* PRM-Service : projet de bean session couche metier
+* PRM-API : API à implementer pour la création d'un plugin (voir pg. Création d'un plugin)
+* PRM-PLUGIN-PARENT : POM Parent des plugins fake
+* PRM_RANDOM_PLUGIN : Plugin qui renvoie une note random
+* PRM_Plugin_Fake : Plugin qui renvoie une note random
 
 Build : PRM-Parent : mvn:install
 Archive déployable sous Wildfly 10.0.0 :
