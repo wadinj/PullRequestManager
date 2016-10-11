@@ -65,11 +65,11 @@ public class PluginService {
 			if(!alreadyPresent) {
 				mapPluginTmp.put(plugin, null);
 				plugins.put(pullRequest.getKey(),mapPluginTmp);
-				session.setAttribute(ConstantUtils.ID_SESSION_PLUGIN_NB, (int)session.getAttribute(ConstantUtils.ID_SESSION_PLUGIN_NB)+1);
 			}
 			alreadyPresent = false;
 		}
 		session.setAttribute(ConstantUtils.ID_SESSION_PLUGIN_RESULT, plugins);
+		session.setAttribute(ConstantUtils.ID_SESSION_PLUGIN_NB, (int)session.getAttribute(ConstantUtils.ID_SESSION_PLUGIN_NB)+1);
 	}
 
 	public void updatePluginLibrary(){
