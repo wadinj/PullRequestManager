@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.eclipse.egit.github.core.client.GitHubClient;
-import org.eclipse.egit.github.core.service.RepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -51,7 +50,7 @@ public class LoginController {
 		logger.info("Requete POST reçu");
 		String username = request.getParameter("usernameGitHub");
 		String password = request.getParameter("passwordGitHub");
-		logger.info("Username : " + username + " password : " + password);
+		logger.info("Username : " + username);
 		if(username == null || password == null) {
 			logger.info("Username ou password null ! ");
 			return "redirect:/login";

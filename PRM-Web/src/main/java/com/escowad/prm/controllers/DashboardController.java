@@ -104,7 +104,6 @@ public class DashboardController {
 			}
 			request.setAttribute(ConstantUtils.ID_REQUEST_AVERAGE, mapAverage);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return mv;

@@ -3,7 +3,6 @@ package com.escowad.prm.services;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
@@ -66,11 +65,11 @@ public class PluginService {
 			if(!alreadyPresent) {
 				mapPluginTmp.put(plugin, null);
 				plugins.put(pullRequest.getKey(),mapPluginTmp);
+				session.setAttribute(ConstantUtils.ID_SESSION_PLUGIN_NB, (int)session.getAttribute(ConstantUtils.ID_SESSION_PLUGIN_NB)+1);
 			}
 			alreadyPresent = false;
 		}
 		session.setAttribute(ConstantUtils.ID_SESSION_PLUGIN_RESULT, plugins);
-		session.setAttribute(ConstantUtils.ID_SESSION_PLUGIN_NB, (int)session.getAttribute(ConstantUtils.ID_SESSION_PLUGIN_NB)+1);
 	}
 
 	public void updatePluginLibrary(){
@@ -124,8 +123,6 @@ public class PluginService {
 				}
 				if (jarEntry.getName().endsWith(".class")) {
 					System.out.println("Found " + jarEntry.getName().replaceAll("/", "\\."));
-
-					//URLClassLoader sysLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
 					URLClassLoader sysLoader = new URLClassLoader(new URL[]{base.toURI().toURL()},getClass().getClassLoader());
 					try {
 						String className = jarEntry.getName().substring(0, jarEntry.getName().length()-6).replace('/', '.');
@@ -138,10 +135,8 @@ public class PluginService {
 					} catch (ClassNotFoundException e1) {
 						System.out.println("Impossible de charger la classe : " + e1.getMessage());
 					} catch (InstantiationException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (IllegalAccessException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}

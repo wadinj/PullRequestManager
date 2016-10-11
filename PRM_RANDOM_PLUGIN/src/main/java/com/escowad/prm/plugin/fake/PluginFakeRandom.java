@@ -31,7 +31,6 @@ public class PluginFakeRandom implements IPRM{
 	
 	@Override
 	public PullRequest executeTreatment(PullRequest pullRequest) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
