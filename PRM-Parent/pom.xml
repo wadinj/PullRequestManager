@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.escowad.prm</groupId>
 	<artifactId>PRM-Parent</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<packaging>pom</packaging>
 	<name>Pom parent du projet PRM</name>
 	<properties>
@@ -11,7 +11,7 @@
 	</properties>
 	<scm>
 		<developerConnection>scm:git:[push=]https://github.com/wadinj/PullRequestManager.git[fetch=]https://github.com/wadinj/PullRequestManager.git</developerConnection>
-	  <tag>HEAD</tag>
+	  <tag>R1.0.1</tag>
   </scm>
 	<build>
 		<plugins>
