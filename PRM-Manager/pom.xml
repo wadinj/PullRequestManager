@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.escowad.prm</groupId>
 		<artifactId>PRM-Parent</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 		<relativePath>../PRM-Parent</relativePath>
 	</parent>
 	<artifactId>PRM-Manager</artifactId>
@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>com.escowad.prm</groupId>
 			<artifactId>PRM-API</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
