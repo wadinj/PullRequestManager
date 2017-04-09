@@ -10,7 +10,6 @@
 	<scm>
 		<url>https://github.com/wadinj/PullRequestManager</url>
 		<connection>scm:git:git://github.com/wadinj/PullRequestManager.git</connection>
-		<developerConnection>scm:git:git@github.com:wadinj/PullRequestManager.git</developerConnection>
 	</scm>
 	<build>
 		<plugins>
