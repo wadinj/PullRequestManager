@@ -9,6 +9,7 @@
 	<name>Pom parent du projet PRM</name>
 	<scm>
 		<url>https://github.com/wadinj/PullRequestManager</url>
+		<connection>scm:git:https://github.com/PullRequestManager</connection>
 	</scm>
 	<build>
 		<plugins>
