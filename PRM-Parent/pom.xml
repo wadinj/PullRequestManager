@@ -33,7 +33,7 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
 				<configuration>
-					<tagBase>https://github.com/wadinj/PullRequestManager/</tagBase>
+					<!-- <tagBase>https://github.com/wadinj/PullRequestManager/</tagBase> -->
 				</configuration>
 			</plugin>
 		</plugins>
