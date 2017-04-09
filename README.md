@@ -1,5 +1,5 @@
 # PullRequestManager
-
+## Release => mvn release:perform -Dusername=***** -Dpassword=******** -Darguments="-Dmaven.deploy.skip=true"
 Auteurs : ESCOBEDO Goeffrey & WADIN Jonathan  
 
 ## Mise en place du projet
